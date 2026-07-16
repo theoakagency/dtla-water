@@ -23,7 +23,7 @@ export default function PageHero({
 }: PageHeroProps) {
   return (
     <section
-      className={`bg-gradient-to-br from-[#061c35] via-[#0d2b4e] to-[#0f4a7a] flex items-center pt-16 px-6 relative overflow-hidden ${
+      className={`bg-gradient-to-br from-[#12233F] via-[#1B3A6B] to-[#2A5A96] flex items-center pt-16 px-6 relative overflow-hidden ${
         compact ? 'min-h-[44vh]' : 'min-h-[56vh]'
       }`}
     >
@@ -53,8 +53,8 @@ export default function PageHero({
 
         {/* Badge */}
         {badge && (
-          <div className="inline-flex items-center gap-2 bg-[#00c9e4]/10 border border-[#00c9e4]/30 text-[#00c9e4] text-xs font-bold tracking-widest uppercase px-4 py-2 rounded-full mb-6">
-            <span className="w-1.5 h-1.5 rounded-full bg-[#00c9e4] animate-pulse" />
+          <div className="inline-flex items-center gap-2 bg-[#29ABE2]/10 border border-[#29ABE2]/30 text-[#29ABE2] text-xs font-bold tracking-widest uppercase px-4 py-2 rounded-full mb-6">
+            <span className="w-1.5 h-1.5 rounded-full bg-[#29ABE2] animate-pulse" />
             {badge}
           </div>
         )}
@@ -62,13 +62,13 @@ export default function PageHero({
         {/* Title */}
         <h1
           className="text-5xl lg:text-6xl font-bold text-white leading-tight mb-5"
-          style={{ fontFamily: 'var(--font-playfair)' }}
+          style={{ fontFamily: 'var(--font-heading)' }}
         >
           {title}
           {titleAccent && (
             <>
               <br />
-              <span className="text-[#00c9e4]">{titleAccent}</span>
+              <span className="text-[#29ABE2]">{titleAccent}</span>
             </>
           )}
         </h1>
@@ -82,7 +82,7 @@ export default function PageHero({
         {cta && (
           <a
             href={cta.href}
-            className="inline-flex items-center gap-2 bg-[#00c9e4] text-[#0d2b4e] px-8 py-4 rounded-lg font-bold hover:bg-[#00dff8] transition-all hover:-translate-y-0.5 hover:shadow-[0_8px_32px_rgba(0,201,228,0.35)]"
+            className="inline-flex items-center gap-2 bg-[#111111] text-white px-8 py-4 rounded-lg font-bold hover:bg-[#2a2a2a] transition-all hover:-translate-y-0.5 hover:shadow-[0_8px_32px_rgba(0,201,228,0.35)]"
           >
             {cta.label}
           </a>

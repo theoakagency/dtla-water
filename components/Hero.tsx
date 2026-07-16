@@ -1,35 +1,18 @@
 'use client'
 
 import { useState } from 'react'
-import Image from 'next/image'
 import { CheckCircle2 } from 'lucide-react'
 
+// PLACEHOLDER — DTLA-area zip codes covering Downtown LA + immediate Greater LA
+// neighborhoods (Arts District, Historic Core, South Park, Financial District,
+// Koreatown, Echo Park, Boyle Heights, etc). Confirm/replace with the real
+// delivery zone before launch.
 const SERVICE_ZIPS = [
-  // Ventura County
-  '93010','93011','93012',
-  '93015','93016',
-  '93020','93021',
-  '91319','91320',
-  '91377',
-  '93022',
-  '93023','93024',
-  '93030','93031','93032','93033','93034','93035','93036',
-  '93040',
-  '93041','93044',
-  '93060','93061',
-  '93062','93063','93065','93093','93094',
-  '93066',
-  '91358','91359','91360','91361','91362',
-  '93001','93002','93003','93004','93005','93006','93007','93009',
-  // Santa Clarita
-  '91350','91380','91382','91383','91390',
-  '91351','91387','91321',
-  '91354','91355',
-  // Antelope Valley
-  '93534','93535','93536','93539','93584',
-  '93550','93551','93552','93590','93591','93599',
-  '93510','93532','93543','93544','93560','93561','93531',
-  '93501','93505','93516','93523','93524',
+  // Downtown LA core
+  '90012', '90013', '90014', '90015', '90017', '90021', '90071',
+  // Greater LA / surrounding neighborhoods
+  '90007', '90020', '90023', '90026', '90027', '90028', '90029',
+  '90031', '90033', '90057', '90058', '90063', '90065',
 ]
 
 export default function Hero() {
@@ -43,14 +26,9 @@ export default function Hero() {
 
   return (
     <section className="min-h-screen flex flex-col relative overflow-hidden pt-16">
-      {/* Background image */}
-      <Image
-        src="/pure-o-water-bottles.png"
-        alt="Pure O Water delivery"
-        fill
-        className="object-cover object-center"
-        priority
-      />
+      {/* Background — TODO: replace with a downtown LA skyline photo (see spec §Imagery).
+          Using a navy gradient placeholder in the meantime. */}
+      <div className="absolute inset-0 bg-gradient-to-br from-[#12233F] via-[#1B3A6B] to-[#2A5A96]" />
 
       {/* Dark overlay */}
       <div className="absolute inset-0 bg-black/35" />
@@ -59,26 +37,27 @@ export default function Hero() {
       <div className="relative z-10 flex-1 flex items-center">
         <div className="max-w-6xl mx-auto px-6 py-20 w-full">
           {/* Badge */}
-          <div className="inline-flex items-center gap-2 bg-[#00c9e4]/10 border border-[#00c9e4]/30 text-[#00c9e4] text-xs font-bold tracking-widest uppercase px-4 py-2 rounded-full mb-7">
-            <span className="w-1.5 h-1.5 rounded-full bg-[#00c9e4] animate-pulse" />
-            Serving Southern California for Over 20 Years
+          <div className="inline-flex items-center gap-2 bg-[#29ABE2]/10 border border-[#29ABE2]/30 text-[#29ABE2] text-xs font-bold tracking-widest uppercase px-4 py-2 rounded-full mb-7">
+            <span className="w-1.5 h-1.5 rounded-full bg-[#29ABE2] animate-pulse" />
+            Serving Downtown LA for Over 20 Years
           </div>
 
-          <h1 className="text-5xl lg:text-6xl font-bold text-white leading-[1.08] mb-6" style={{ fontFamily: 'var(--font-playfair)' }}>
-            Premium Water<br />
-            Delivered to<br />
-            Your <span className="text-[#00c9e4]">Door.</span>
+          <h1 className="text-5xl lg:text-6xl font-bold text-white leading-[1.08] mb-6" style={{ fontFamily: 'var(--font-heading)' }}>
+            Stay Hydrated<br />
+            and Healthy with<br />
+            <span className="text-[#29ABE2]">DTLA Water.</span>
           </h1>
 
           <p className="text-lg text-white/75 leading-relaxed mb-10 max-w-lg">
-            Alkaline and Purified water for homes, offices, and businesses
-            across Ventura County, Santa Clarita, and the Antelope Valley.
+            Reliable bottled water delivery for offices, industrial facilities, events,
+            and film productions across Downtown Los Angeles. Small enough to care,
+            big enough to deliver.
           </p>
 
           <div className="flex flex-wrap gap-4">
             <a
               href="#order"
-              className="inline-flex items-center gap-2 bg-[#00c9e4] text-[#0d2b4e] px-8 py-4 rounded-lg font-bold text-base hover:bg-[#00dff8] transition-all hover:-translate-y-0.5 hover:shadow-[0_8px_32px_rgba(0,201,228,0.35)]"
+              className="inline-flex items-center gap-2 bg-[#111111] text-white px-8 py-4 rounded-lg font-bold text-base hover:bg-[#2a2a2a] transition-all hover:-translate-y-0.5 hover:shadow-[0_8px_32px_rgba(0,0,0,0.35)]"
             >
               Start My Delivery →
             </a>
@@ -97,13 +76,13 @@ export default function Hero() {
         <div className="max-w-6xl mx-auto px-6 py-5 flex flex-col sm:flex-row items-start sm:items-center gap-5">
           {/* Stats */}
           <div className="flex items-center gap-2 flex-shrink-0">
-            <CheckCircle2 size={18} className="text-[#00c9e4]" />
+            <CheckCircle2 size={18} className="text-[#29ABE2]" />
             <span className="text-white font-bold text-sm">6,000+</span>
             <span className="text-white/60 text-sm">Happy customers</span>
           </div>
           <div className="hidden sm:block w-px h-5 bg-white/20 flex-shrink-0" />
           <div className="flex items-center gap-2 flex-shrink-0">
-            <CheckCircle2 size={18} className="text-[#00c9e4]" />
+            <CheckCircle2 size={18} className="text-[#29ABE2]" />
             <span className="text-white font-bold text-sm">20 years</span>
             <span className="text-white/60 text-sm">In business</span>
           </div>
@@ -119,11 +98,11 @@ export default function Hero() {
                 value={zip}
                 onChange={(e) => { setZip(e.target.value.replace(/\D/g, '')); setZipResult(null) }}
                 onKeyDown={(e) => e.key === 'Enter' && checkZip()}
-                className="flex-1 bg-white/15 border border-white/35 rounded-lg px-4 py-2.5 text-white placeholder-white/70 text-sm outline-none focus:border-[#00c9e4] transition-colors min-w-0"
+                className="flex-1 bg-white/15 border border-white/35 rounded-lg px-4 py-2.5 text-white placeholder-white/70 text-sm outline-none focus:border-[#29ABE2] transition-colors min-w-0"
               />
               <button
                 onClick={checkZip}
-                className="bg-[#00c9e4] text-[#0d2b4e] px-5 py-2.5 rounded-lg font-bold text-sm hover:bg-[#00dff8] transition-colors whitespace-nowrap flex-shrink-0"
+                className="bg-[#111111] text-white px-5 py-2.5 rounded-lg font-bold text-sm hover:bg-[#2a2a2a] transition-colors whitespace-nowrap flex-shrink-0"
               >
                 Check →
               </button>
@@ -139,7 +118,7 @@ export default function Hero() {
                 </div>
                 <a
                   href="#order"
-                  className="bg-[#00c9e4] text-[#0d2b4e] px-4 py-2 rounded-lg font-bold text-xs hover:bg-[#00dff8] transition-all whitespace-nowrap flex-shrink-0"
+                  className="bg-[#111111] text-white px-4 py-2 rounded-lg font-bold text-xs hover:bg-[#2a2a2a] transition-all whitespace-nowrap flex-shrink-0"
                 >
                   Order Now →
                 </a>

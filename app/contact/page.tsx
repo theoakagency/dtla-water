@@ -31,7 +31,7 @@ export default function ContactPage() {
     }
   }
 
-  const inputClass = 'w-full border border-[#d0e4ef] rounded-lg px-4 py-3 text-sm text-[#1a2a3a] outline-none focus:border-[#1e90d6] focus:ring-2 focus:ring-[#1e90d6]/10 transition-all'
+  const inputClass = 'w-full border border-[#d0e4ef] rounded-lg px-4 py-3 text-sm text-[#1A1A1A] outline-none focus:border-[#29ABE2] focus:ring-2 focus:ring-[#29ABE2]/10 transition-all'
 
   const contactDetails = [
     {
@@ -82,14 +82,14 @@ export default function ContactPage() {
             {/* Left sidebar — contact info */}
             <div className="lg:col-span-2 space-y-6">
               {/* Quick contact */}
-              <div className="bg-[#f4f7fa] rounded-2xl p-7">
-                <h3 className="font-bold text-[#0d2b4e] text-lg mb-5" style={{ fontFamily: 'var(--font-playfair)' }}>
+              <div className="bg-[#F5F8FB] rounded-2xl p-7">
+                <h3 className="font-bold text-[#1B3A6B] text-lg mb-5" style={{ fontFamily: 'var(--font-heading)' }}>
                   Contact Info
                 </h3>
                 <div className="space-y-5">
                   {contactDetails.map((item) => (
                     <div key={item.label} className="flex items-start gap-3">
-                      <div className="w-9 h-9 rounded-xl bg-[#0d2b4e] text-white flex items-center justify-center flex-shrink-0 mt-0.5">
+                      <div className="w-9 h-9 rounded-xl bg-[#1B3A6B] text-white flex items-center justify-center flex-shrink-0 mt-0.5">
                         <item.icon size={16} />
                       </div>
                       <div>
@@ -98,7 +98,7 @@ export default function ContactPage() {
                         </div>
                         <a
                           href={item.href ?? undefined}
-                          className="text-[#0d2b4e] font-semibold text-sm hover:text-[#1e90d6] transition-colors block"
+                          className="text-[#1B3A6B] font-semibold text-sm hover:text-[#29ABE2] transition-colors block"
                         >
                           {item.value}
                         </a>
@@ -116,15 +116,15 @@ export default function ContactPage() {
               </div>
 
               {/* Hours */}
-              <div className="bg-[#f4f7fa] rounded-2xl p-7">
-                <h3 className="font-bold text-[#0d2b4e] text-lg mb-5" style={{ fontFamily: 'var(--font-playfair)' }}>
+              <div className="bg-[#F5F8FB] rounded-2xl p-7">
+                <h3 className="font-bold text-[#1B3A6B] text-lg mb-5" style={{ fontFamily: 'var(--font-heading)' }}>
                   Business Hours
                 </h3>
                 <div className="space-y-3">
                   {hours.map((h) => (
                     <div key={h.day} className="flex justify-between items-center text-sm">
                       <span className="text-[#5a7080]">{h.day}</span>
-                      <span className={`font-semibold ${h.hours === 'Closed' ? 'text-[#5a7080]' : 'text-[#0d2b4e]'}`}>
+                      <span className={`font-semibold ${h.hours === 'Closed' ? 'text-[#5a7080]' : 'text-[#1B3A6B]'}`}>
                         {h.hours}
                       </span>
                     </div>
@@ -136,8 +136,8 @@ export default function ContactPage() {
               </div>
 
               {/* Quick start CTA */}
-              <div className="bg-gradient-to-br from-[#0d2b4e] to-[#1565c0] rounded-2xl p-7 text-white">
-                <h3 className="font-bold text-lg mb-2" style={{ fontFamily: 'var(--font-playfair)' }}>
+              <div className="bg-gradient-to-br from-[#1B3A6B] to-[#2A5A96] rounded-2xl p-7 text-white">
+                <h3 className="font-bold text-lg mb-2" style={{ fontFamily: 'var(--font-heading)' }}>
                   Ready to Order?
                 </h3>
                 <p className="text-white/65 text-sm mb-5">
@@ -145,7 +145,7 @@ export default function ContactPage() {
                 </p>
                 <a
                   href="#order-form"
-                  className="block text-center bg-[#00c9e4] text-[#0d2b4e] py-3 rounded-lg font-bold text-sm hover:bg-[#00dff8] transition-all"
+                  className="block text-center bg-[#111111] text-white py-3 rounded-lg font-bold text-sm hover:bg-[#2a2a2a] transition-all"
                 >
                   Start My Delivery →
                 </a>
@@ -155,21 +155,21 @@ export default function ContactPage() {
             {/* Right — contact form */}
             <div className="lg:col-span-3">
               <div className="border-2 border-[#d0e4ef] rounded-2xl p-8">
-                <h2 className="text-2xl font-bold text-[#0d2b4e] mb-2" style={{ fontFamily: 'var(--font-playfair)' }}>
+                <h2 className="text-2xl font-bold text-[#1B3A6B] mb-2" style={{ fontFamily: 'var(--font-heading)' }}>
                   Send Us a Message
                 </h2>
                 <p className="text-[#5a7080] text-sm mb-7">We respond to all messages within 1 business day.</p>
 
                 {status === 'success' ? (
                   <div className="text-center py-10">
-                    <div className="w-16 h-16 rounded-full bg-[#e8f6fb] flex items-center justify-center mx-auto mb-4">
-                      <CheckCircle2 size={32} className="text-[#1e90d6]" />
+                    <div className="w-16 h-16 rounded-full bg-[#F5F8FB] flex items-center justify-center mx-auto mb-4">
+                      <CheckCircle2 size={32} className="text-[#29ABE2]" />
                     </div>
-                    <h3 className="text-xl font-bold text-[#0d2b4e] mb-2" style={{ fontFamily: 'var(--font-playfair)' }}>
+                    <h3 className="text-xl font-bold text-[#1B3A6B] mb-2" style={{ fontFamily: 'var(--font-heading)' }}>
                       Message Sent!
                     </h3>
                     <p className="text-[#5a7080]">We&apos;ll get back to you within 1 business day.</p>
-                    <button onClick={() => setStatus('idle')} className="mt-5 text-[#1e90d6] text-sm font-medium hover:underline">
+                    <button onClick={() => setStatus('idle')} className="mt-5 text-[#29ABE2] text-sm font-medium hover:underline">
                       Send another message
                     </button>
                   </div>
@@ -177,22 +177,22 @@ export default function ContactPage() {
                   <form onSubmit={handleSubmit} className="space-y-4">
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                       <div>
-                        <label className="block text-xs font-semibold text-[#0d2b4e] mb-1.5">Your Name</label>
+                        <label className="block text-xs font-semibold text-[#1B3A6B] mb-1.5">Your Name</label>
                         <input type="text" placeholder="Maria Garcia" value={form.name} onChange={set('name')} required className={inputClass} />
                       </div>
                       <div>
-                        <label className="block text-xs font-semibold text-[#0d2b4e] mb-1.5">Phone Number</label>
+                        <label className="block text-xs font-semibold text-[#1B3A6B] mb-1.5">Phone Number</label>
                         <input type="tel" placeholder="(805) 555-0100" value={form.phone} onChange={set('phone')} className={inputClass} />
                       </div>
                     </div>
 
                     <div>
-                      <label className="block text-xs font-semibold text-[#0d2b4e] mb-1.5">Email Address</label>
+                      <label className="block text-xs font-semibold text-[#1B3A6B] mb-1.5">Email Address</label>
                       <input type="email" placeholder="maria@example.com" value={form.email} onChange={set('email')} required className={inputClass} />
                     </div>
 
                     <div>
-                      <label className="block text-xs font-semibold text-[#0d2b4e] mb-1.5">Subject</label>
+                      <label className="block text-xs font-semibold text-[#1B3A6B] mb-1.5">Subject</label>
                       <select value={form.subject} onChange={set('subject')} className={inputClass}>
                         <option value="">Select a topic…</option>
                         <option>New delivery inquiry</option>
@@ -205,7 +205,7 @@ export default function ContactPage() {
                     </div>
 
                     <div>
-                      <label className="block text-xs font-semibold text-[#0d2b4e] mb-1.5">Message</label>
+                      <label className="block text-xs font-semibold text-[#1B3A6B] mb-1.5">Message</label>
                       <textarea
                         rows={5}
                         placeholder="Tell us how we can help…"
@@ -228,7 +228,7 @@ export default function ContactPage() {
                     <button
                       type="submit"
                       disabled={status === 'loading'}
-                      className="w-full bg-[#1e90d6] hover:bg-[#1565c0] text-white py-4 rounded-xl font-bold text-sm transition-all hover:-translate-y-0.5 disabled:opacity-60 flex items-center justify-center gap-2"
+                      className="w-full bg-[#29ABE2] hover:bg-[#2A5A96] text-white py-4 rounded-xl font-bold text-sm transition-all hover:-translate-y-0.5 disabled:opacity-60 flex items-center justify-center gap-2"
                     >
                       {status === 'loading' ? (
                         <>
@@ -250,9 +250,9 @@ export default function ContactPage() {
         </div>
 
         {/* Map embed */}
-        <section className="bg-[#f4f7fa] px-6 pb-20">
+        <section className="bg-[#F5F8FB] px-6 pb-20">
           <div className="max-w-6xl mx-auto">
-            <h3 className="text-xl font-bold text-[#0d2b4e] mb-5 text-center" style={{ fontFamily: 'var(--font-playfair)' }}>
+            <h3 className="text-xl font-bold text-[#1B3A6B] mb-5 text-center" style={{ fontFamily: 'var(--font-heading)' }}>
               Our Service Area
             </h3>
             <div className="rounded-2xl overflow-hidden border-2 border-[#d0e4ef] h-72">

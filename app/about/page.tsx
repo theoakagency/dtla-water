@@ -42,8 +42,8 @@ export default function AboutPage() {
         <section className="py-24 px-6 bg-white">
           <div className="max-w-4xl mx-auto">
             <div>
-              <p className="text-xs font-bold tracking-[0.12em] uppercase text-[#1e90d6] mb-4">Our Mission</p>
-              <h2 className="text-4xl font-bold text-[#0d2b4e] leading-tight mb-6" style={{ fontFamily: 'var(--font-playfair)' }}>
+              <p className="text-xs font-bold tracking-[0.12em] uppercase text-[#29ABE2] mb-4">Our Mission</p>
+              <h2 className="text-4xl font-bold text-[#1B3A6B] leading-tight mb-6" style={{ fontFamily: 'var(--font-heading)' }}>
                 Better Water for Every Home and Business in Southern California
               </h2>
               <p className="text-[#5a7080] text-lg leading-relaxed mb-5">
@@ -59,7 +59,7 @@ export default function AboutPage() {
                   { num: '11', label: 'Communities served' },
                 ].map((s) => (
                   <div key={s.label}>
-                    <div className="text-3xl font-bold text-[#0d2b4e]" style={{ fontFamily: 'var(--font-playfair)' }}>{s.num}</div>
+                    <div className="text-3xl font-bold text-[#1B3A6B]" style={{ fontFamily: 'var(--font-heading)' }}>{s.num}</div>
                     <div className="text-sm text-[#5a7080] mt-1">{s.label}</div>
                   </div>
                 ))}
@@ -69,21 +69,21 @@ export default function AboutPage() {
         </section>
 
         {/* Values */}
-        <section className="py-20 px-6 bg-[#f4f7fa]">
+        <section className="py-20 px-6 bg-[#F5F8FB]">
           <div className="max-w-6xl mx-auto">
             <div className="text-center mb-12">
-              <p className="text-xs font-bold tracking-[0.12em] uppercase text-[#1e90d6] mb-3">What We Stand For</p>
-              <h2 className="text-4xl font-bold text-[#0d2b4e]" style={{ fontFamily: 'var(--font-playfair)' }}>Our Values</h2>
+              <p className="text-xs font-bold tracking-[0.12em] uppercase text-[#29ABE2] mb-3">What We Stand For</p>
+              <h2 className="text-4xl font-bold text-[#1B3A6B]" style={{ fontFamily: 'var(--font-heading)' }}>Our Values</h2>
             </div>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
               {values.map((v) => {
                 const Icon = v.icon
                 return (
                   <div key={v.title} className="bg-white rounded-2xl p-7 border border-[#d0e4ef]">
-                    <div className="w-11 h-11 rounded-xl bg-[#e8f6fb] flex items-center justify-center mb-4">
-                      <Icon size={20} className="text-[#1e90d6]" />
+                    <div className="w-11 h-11 rounded-xl bg-[#F5F8FB] flex items-center justify-center mb-4">
+                      <Icon size={20} className="text-[#29ABE2]" />
                     </div>
-                    <h3 className="font-bold text-[#0d2b4e] mb-3" style={{ fontFamily: 'var(--font-playfair)' }}>{v.title}</h3>
+                    <h3 className="font-bold text-[#1B3A6B] mb-3" style={{ fontFamily: 'var(--font-heading)' }}>{v.title}</h3>
                     <p className="text-[#5a7080] text-sm leading-relaxed">{v.desc}</p>
                   </div>
                 )
@@ -96,8 +96,8 @@ export default function AboutPage() {
         <section className="py-20 px-6 bg-white">
           <div className="max-w-4xl mx-auto">
             <div className="text-center mb-12">
-              <p className="text-xs font-bold tracking-[0.12em] uppercase text-[#1e90d6] mb-3">Our Journey</p>
-              <h2 className="text-4xl font-bold text-[#0d2b4e]" style={{ fontFamily: 'var(--font-playfair)' }}>20 Years of Growth</h2>
+              <p className="text-xs font-bold tracking-[0.12em] uppercase text-[#29ABE2] mb-3">Our Journey</p>
+              <h2 className="text-4xl font-bold text-[#1B3A6B]" style={{ fontFamily: 'var(--font-heading)' }}>20 Years of Growth</h2>
             </div>
             <div className="relative">
               {/* Vertical line */}
@@ -106,14 +106,14 @@ export default function AboutPage() {
                 {timeline.map((item, i) => (
                   <div key={item.year} className="flex gap-8 items-start">
                     <div className="flex-shrink-0 w-32 text-right">
-                      <span className="inline-block bg-[#0d2b4e] text-[#00c9e4] text-sm font-bold px-3 py-1.5 rounded-lg">
+                      <span className="inline-block bg-[#1B3A6B] text-[#29ABE2] text-sm font-bold px-3 py-1.5 rounded-lg">
                         {item.year}
                       </span>
                     </div>
                     <div className="relative flex-1 pb-8">
                       {/* Dot on timeline */}
-                      <div className="absolute -left-[25px] top-2 w-3 h-3 rounded-full bg-[#00c9e4] border-2 border-white ring-2 ring-[#00c9e4]/30" />
-                      <h3 className="font-bold text-[#0d2b4e] mb-1">{item.title}</h3>
+                      <div className="absolute -left-[25px] top-2 w-3 h-3 rounded-full bg-[#29ABE2] border-2 border-white ring-2 ring-[#29ABE2]/30" />
+                      <h3 className="font-bold text-[#1B3A6B] mb-1">{item.title}</h3>
                       <p className="text-[#5a7080] text-sm leading-relaxed">{item.desc}</p>
                     </div>
                   </div>

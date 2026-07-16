@@ -2,7 +2,7 @@ const steps = [
   {
     num: '1',
     title: 'Choose Your Water',
-    desc: 'Select purified or alkaline water and your bottle size. Tell us roughly how much you think you\'ll need.',
+    desc: 'Select purified or alkaline water and your bottle size. Tell us roughly how much your office, site, or production will need.',
   },
   {
     num: '2',
@@ -12,7 +12,7 @@ const steps = [
   {
     num: '3',
     title: 'We Deliver to You',
-    desc: 'Fresh bottles delivered to your door. We pick up empties at no extra charge.',
+    desc: 'Fresh bottles delivered to your door — office, warehouse, or set. We pick up empties at no extra charge.',
   },
   {
     num: '4',
@@ -26,8 +26,8 @@ export default function HowItWorks() {
     <section id="how" className="py-24 px-6 bg-white">
       <div className="max-w-6xl mx-auto">
         <div className="text-center mb-16">
-          <p className="text-xs font-bold tracking-[0.12em] uppercase text-[#1e90d6] mb-4">Simple Process</p>
-          <h2 className="text-4xl lg:text-5xl font-bold text-[#0d2b4e] mb-5" style={{ fontFamily: 'var(--font-playfair)' }}>
+          <p className="text-xs font-bold tracking-[0.12em] uppercase text-[#29ABE2] mb-4">Simple Process</p>
+          <h2 className="text-4xl lg:text-5xl font-bold text-[#1B3A6B] mb-5" style={{ fontFamily: 'var(--font-heading)' }}>
             Get Started in Minutes
           </h2>
           <p className="text-[#5a7080] text-lg max-w-md mx-auto leading-relaxed">
@@ -37,14 +37,14 @@ export default function HowItWorks() {
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 relative">
           {/* Connector line (desktop only) */}
-          <div className="hidden lg:block absolute top-8 left-[12.5%] right-[12.5%] h-px bg-gradient-to-r from-[#e8f6fb] via-[#d0e4ef] to-[#e8f6fb]" />
+          <div className="hidden lg:block absolute top-8 left-[12.5%] right-[12.5%] h-px bg-gradient-to-r from-[#F5F8FB] via-[#d0e4ef] to-[#F5F8FB]" />
 
           {steps.map((step) => (
             <div key={step.num} className="text-center relative z-10">
-              <div className="w-14 h-14 rounded-full border-2 border-[#1e90d6] text-[#1e90d6] text-xl font-bold flex items-center justify-center mx-auto mb-5 bg-white" style={{ fontFamily: 'var(--font-playfair)' }}>
+              <div className="w-14 h-14 rounded-full border-2 border-[#29ABE2] text-[#29ABE2] text-xl font-bold flex items-center justify-center mx-auto mb-5 bg-white" style={{ fontFamily: 'var(--font-heading)' }}>
                 {step.num}
               </div>
-              <h3 className="font-bold text-[#0d2b4e] text-lg mb-2" style={{ fontFamily: 'var(--font-playfair)' }}>{step.title}</h3>
+              <h3 className="font-bold text-[#1B3A6B] text-lg mb-2" style={{ fontFamily: 'var(--font-heading)' }}>{step.title}</h3>
               <p className="text-[#5a7080] text-sm leading-relaxed">{step.desc}</p>
             </div>
           ))}

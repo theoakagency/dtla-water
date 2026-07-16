@@ -41,7 +41,7 @@ export default function SitemapPage() {
 
               {/* Main pages */}
               <div>
-                <h2 className="text-xs font-bold tracking-[0.12em] uppercase text-[#1e90d6] mb-4">
+                <h2 className="text-xs font-bold tracking-[0.12em] uppercase text-[#29ABE2] mb-4">
                   Main Pages
                 </h2>
                 <ul className="space-y-2">
@@ -49,9 +49,9 @@ export default function SitemapPage() {
                     <li key={page.href}>
                       <Link
                         href={page.href}
-                        className="flex items-center gap-2 text-[#0d2b4e] hover:text-[#1e90d6] transition-colors text-sm font-medium group"
+                        className="flex items-center gap-2 text-[#1B3A6B] hover:text-[#29ABE2] transition-colors text-sm font-medium group"
                       >
-                        <span className="w-1.5 h-1.5 rounded-full bg-[#00c9e4] flex-shrink-0 group-hover:scale-125 transition-transform" />
+                        <span className="w-1.5 h-1.5 rounded-full bg-[#29ABE2] flex-shrink-0 group-hover:scale-125 transition-transform" />
                         {page.label}
                       </Link>
                     </li>
@@ -61,7 +61,7 @@ export default function SitemapPage() {
 
               {/* Services */}
               <div>
-                <h2 className="text-xs font-bold tracking-[0.12em] uppercase text-[#1e90d6] mb-4">
+                <h2 className="text-xs font-bold tracking-[0.12em] uppercase text-[#29ABE2] mb-4">
                   Services
                 </h2>
                 <ul className="space-y-2">
@@ -69,9 +69,9 @@ export default function SitemapPage() {
                     <li key={s.slug}>
                       <Link
                         href={`/services/${s.slug}`}
-                        className="flex items-center gap-2 text-[#0d2b4e] hover:text-[#1e90d6] transition-colors text-sm font-medium group"
+                        className="flex items-center gap-2 text-[#1B3A6B] hover:text-[#29ABE2] transition-colors text-sm font-medium group"
                       >
-                        <span className="w-1.5 h-1.5 rounded-full bg-[#00c9e4] flex-shrink-0 group-hover:scale-125 transition-transform" />
+                        <span className="w-1.5 h-1.5 rounded-full bg-[#29ABE2] flex-shrink-0 group-hover:scale-125 transition-transform" />
                         {s.name} Water Delivery
                       </Link>
                     </li>
@@ -86,7 +86,7 @@ export default function SitemapPage() {
 
               {/* Ventura County cities */}
               <div>
-                <h2 className="text-xs font-bold tracking-[0.12em] uppercase text-[#1e90d6] mb-4">
+                <h2 className="text-xs font-bold tracking-[0.12em] uppercase text-[#29ABE2] mb-4">
                   Ventura County Service Areas
                 </h2>
                 <ul className="space-y-2">
@@ -96,9 +96,9 @@ export default function SitemapPage() {
                       <li key={city.slug}>
                         <Link
                           href={`/areas/${city.slug}`}
-                          className="flex items-center gap-2 text-[#0d2b4e] hover:text-[#1e90d6] transition-colors text-sm font-medium group"
+                          className="flex items-center gap-2 text-[#1B3A6B] hover:text-[#29ABE2] transition-colors text-sm font-medium group"
                         >
-                          <span className="w-1.5 h-1.5 rounded-full bg-[#00c9e4] flex-shrink-0 group-hover:scale-125 transition-transform" />
+                          <span className="w-1.5 h-1.5 rounded-full bg-[#29ABE2] flex-shrink-0 group-hover:scale-125 transition-transform" />
                           Water Delivery in {city.name}, CA
                         </Link>
                       </li>
@@ -108,7 +108,7 @@ export default function SitemapPage() {
 
               {/* LA County cities */}
               <div>
-                <h2 className="text-xs font-bold tracking-[0.12em] uppercase text-[#1e90d6] mb-4">
+                <h2 className="text-xs font-bold tracking-[0.12em] uppercase text-[#29ABE2] mb-4">
                   Los Angeles County Service Areas
                 </h2>
                 <ul className="space-y-2">
@@ -118,9 +118,9 @@ export default function SitemapPage() {
                       <li key={city.slug}>
                         <Link
                           href={`/areas/${city.slug}`}
-                          className="flex items-center gap-2 text-[#0d2b4e] hover:text-[#1e90d6] transition-colors text-sm font-medium group"
+                          className="flex items-center gap-2 text-[#1B3A6B] hover:text-[#29ABE2] transition-colors text-sm font-medium group"
                         >
-                          <span className="w-1.5 h-1.5 rounded-full bg-[#00c9e4] flex-shrink-0 group-hover:scale-125 transition-transform" />
+                          <span className="w-1.5 h-1.5 rounded-full bg-[#29ABE2] flex-shrink-0 group-hover:scale-125 transition-transform" />
                           Water Delivery in {city.name}, CA
                         </Link>
                       </li>
@@ -133,7 +133,7 @@ export default function SitemapPage() {
         </section>
 
         {/* XML sitemap note */}
-        <section className="py-10 px-6 bg-[#f4f7fa] border-t border-[#d0e4ef]">
+        <section className="py-10 px-6 bg-[#F5F8FB] border-t border-[#d0e4ef]">
           <div className="max-w-6xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
             <p className="text-[#5a7080] text-sm">
               Looking for the XML sitemap for search engines?
@@ -141,7 +141,7 @@ export default function SitemapPage() {
             <a
               href="/sitemap.xml"
               target="_blank"
-              className="text-[#1e90d6] font-semibold text-sm hover:underline flex items-center gap-1"
+              className="text-[#29ABE2] font-semibold text-sm hover:underline flex items-center gap-1"
             >
               View XML Sitemap →
             </a>

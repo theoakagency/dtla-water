@@ -72,19 +72,19 @@ function OutOfAreaForm() {
   }
 
   const inputClass = (field: keyof FormData) =>
-    `w-full border rounded-lg px-3.5 py-3 text-sm text-[#1a2a3a] outline-none transition-all ${
+    `w-full border rounded-lg px-3.5 py-3 text-sm text-[#1A1A1A] outline-none transition-all ${
       errors[field]
         ? 'border-red-400 focus:ring-2 focus:ring-red-200'
-        : 'border-[#d0e4ef] focus:border-[#1e90d6] focus:ring-2 focus:ring-[#1e90d6]/10'
+        : 'border-[#d0e4ef] focus:border-[#29ABE2] focus:ring-2 focus:ring-[#29ABE2]/10'
     }`
 
   if (status === 'success') {
     return (
       <div className="text-center py-16 px-6">
-        <div className="w-20 h-20 rounded-full bg-[#e8f6fb] flex items-center justify-center mx-auto mb-6">
-          <PartyPopper size={40} className="text-[#1e90d6]" />
+        <div className="w-20 h-20 rounded-full bg-[#F5F8FB] flex items-center justify-center mx-auto mb-6">
+          <PartyPopper size={40} className="text-[#29ABE2]" />
         </div>
-        <h2 className="text-3xl font-bold text-[#0d2b4e] mb-4" style={{ fontFamily: 'var(--font-playfair)' }}>
+        <h2 className="text-3xl font-bold text-[#1B3A6B] mb-4" style={{ fontFamily: 'var(--font-heading)' }}>
           You&apos;re all set!
         </h2>
         <p className="text-[#5a7080] leading-relaxed max-w-md mx-auto">
@@ -99,12 +99,12 @@ function OutOfAreaForm() {
       {/* Name */}
       <div className="grid grid-cols-2 gap-3">
         <div>
-          <label className="block text-xs font-semibold text-[#0d2b4e] mb-1.5">First Name</label>
+          <label className="block text-xs font-semibold text-[#1B3A6B] mb-1.5">First Name</label>
           <input type="text" placeholder="Maria" value={form.firstName} onChange={set('firstName')} className={inputClass('firstName')} />
           {errors.firstName && <p className="text-red-500 text-xs mt-1">{errors.firstName}</p>}
         </div>
         <div>
-          <label className="block text-xs font-semibold text-[#0d2b4e] mb-1.5">Last Name</label>
+          <label className="block text-xs font-semibold text-[#1B3A6B] mb-1.5">Last Name</label>
           <input type="text" placeholder="Garcia" value={form.lastName} onChange={set('lastName')} className={inputClass('lastName')} />
           {errors.lastName && <p className="text-red-500 text-xs mt-1">{errors.lastName}</p>}
         </div>
@@ -112,32 +112,32 @@ function OutOfAreaForm() {
 
       {/* Phone */}
       <div>
-        <label className="block text-xs font-semibold text-[#0d2b4e] mb-1.5">Phone Number</label>
+        <label className="block text-xs font-semibold text-[#1B3A6B] mb-1.5">Phone Number</label>
         <input type="tel" placeholder="(805) 555-0100" value={form.phone} onChange={set('phone')} className={inputClass('phone')} />
         {errors.phone && <p className="text-red-500 text-xs mt-1">{errors.phone}</p>}
       </div>
 
       {/* Email */}
       <div>
-        <label className="block text-xs font-semibold text-[#0d2b4e] mb-1.5">Email Address</label>
+        <label className="block text-xs font-semibold text-[#1B3A6B] mb-1.5">Email Address</label>
         <input type="email" placeholder="maria@example.com" value={form.email} onChange={set('email')} className={inputClass('email')} />
         {errors.email && <p className="text-red-500 text-xs mt-1">{errors.email}</p>}
       </div>
 
       {/* Address */}
       <div>
-        <label className="block text-xs font-semibold text-[#0d2b4e] mb-1.5">Street Address <span className="text-[#5a7080] font-normal">(optional)</span></label>
+        <label className="block text-xs font-semibold text-[#1B3A6B] mb-1.5">Street Address <span className="text-[#5a7080] font-normal">(optional)</span></label>
         <input type="text" placeholder="123 Main St" value={form.address} onChange={set('address')} className={inputClass('address')} />
       </div>
 
       {/* City + Zip */}
       <div className="grid grid-cols-2 gap-3">
         <div>
-          <label className="block text-xs font-semibold text-[#0d2b4e] mb-1.5">City <span className="text-[#5a7080] font-normal">(optional)</span></label>
+          <label className="block text-xs font-semibold text-[#1B3A6B] mb-1.5">City <span className="text-[#5a7080] font-normal">(optional)</span></label>
           <input type="text" placeholder="Burbank" value={form.city} onChange={set('city')} className={inputClass('city')} />
         </div>
         <div>
-          <label className="block text-xs font-semibold text-[#0d2b4e] mb-1.5">Zip Code</label>
+          <label className="block text-xs font-semibold text-[#1B3A6B] mb-1.5">Zip Code</label>
           <input type="text" placeholder="91505" maxLength={5} value={form.zip} onChange={set('zip')} className={inputClass('zip')} />
           {errors.zip && <p className="text-red-500 text-xs mt-1">{errors.zip}</p>}
         </div>
@@ -146,7 +146,7 @@ function OutOfAreaForm() {
       {/* Water preferences */}
       <div className="grid grid-cols-2 gap-3">
         <div>
-          <label className="block text-xs font-semibold text-[#0d2b4e] mb-1.5">Water Type</label>
+          <label className="block text-xs font-semibold text-[#1B3A6B] mb-1.5">Water Type</label>
           <select value={form.waterType} onChange={set('waterType')} className={inputClass('waterType')}>
             <option>Purified Drinking Water</option>
             <option>Alkaline Water (pH 9.5)</option>
@@ -155,7 +155,7 @@ function OutOfAreaForm() {
           </select>
         </div>
         <div>
-          <label className="block text-xs font-semibold text-[#0d2b4e] mb-1.5">Bottle Size</label>
+          <label className="block text-xs font-semibold text-[#1B3A6B] mb-1.5">Bottle Size</label>
           <select value={form.bottleSize} onChange={set('bottleSize')} className={inputClass('bottleSize')}>
             <option>5 Gallon</option>
             <option>3 Gallon</option>
@@ -176,7 +176,7 @@ function OutOfAreaForm() {
       <button
         type="submit"
         disabled={status === 'loading'}
-        className="w-full bg-[#1e90d6] hover:bg-[#1565c0] text-white py-4 rounded-xl font-bold text-base transition-all hover:-translate-y-0.5 hover:shadow-[0_6px_24px_rgba(21,101,192,0.35)] disabled:opacity-60 disabled:cursor-not-allowed"
+        className="w-full bg-[#29ABE2] hover:bg-[#2A5A96] text-white py-4 rounded-xl font-bold text-base transition-all hover:-translate-y-0.5 hover:shadow-[0_6px_24px_rgba(21,101,192,0.35)] disabled:opacity-60 disabled:cursor-not-allowed"
       >
         {status === 'loading' ? 'Submitting…' : 'Connect Me With a Local Provider →'}
       </button>
@@ -192,25 +192,25 @@ export default function OutOfAreaPage() {
   return (
     <>
       <Navbar />
-      <main className="min-h-screen bg-[#f4f7fa]">
+      <main className="min-h-screen bg-[#F5F8FB]">
         <div className="max-w-2xl mx-auto px-6 py-20">
 
           {/* Message */}
-          <div className="bg-white rounded-2xl border-2 border-[#00c9e4]/40 p-8 mb-8 text-center shadow-sm">
-            <div className="w-14 h-14 rounded-full bg-[#e8f6fb] flex items-center justify-center mx-auto mb-4">
-              <CheckCircle2 size={28} className="text-[#1e90d6]" />
+          <div className="bg-white rounded-2xl border-2 border-[#29ABE2]/40 p-8 mb-8 text-center shadow-sm">
+            <div className="w-14 h-14 rounded-full bg-[#F5F8FB] flex items-center justify-center mx-auto mb-4">
+              <CheckCircle2 size={28} className="text-[#29ABE2]" />
             </div>
-            <h1 className="text-3xl font-bold text-[#0d2b4e] mb-4 leading-tight" style={{ fontFamily: 'var(--font-playfair)' }}>
+            <h1 className="text-3xl font-bold text-[#1B3A6B] mb-4 leading-tight" style={{ fontFamily: 'var(--font-heading)' }}>
               Good News!
             </h1>
-            <p className="text-[#1a2a3a] leading-relaxed text-base">
+            <p className="text-[#1A1A1A] leading-relaxed text-base">
               Your ZIP Code is covered by one of our trusted sister companies in our network of independent bottled water providers. Simply fill out the form below, and they&apos;ll reach out to you within one business day.
             </p>
           </div>
 
           {/* Form card */}
           <div className="bg-white rounded-2xl border border-[#d0e4ef] p-8 shadow-sm">
-            <h2 className="text-xl font-bold text-[#0d2b4e] mb-1" style={{ fontFamily: 'var(--font-playfair)' }}>
+            <h2 className="text-xl font-bold text-[#1B3A6B] mb-1" style={{ fontFamily: 'var(--font-heading)' }}>
               Tell Us About Your Needs
             </h2>
             <p className="text-[#5a7080] text-sm mb-6">Takes less than 2 minutes</p>

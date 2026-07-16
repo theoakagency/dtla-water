@@ -12,7 +12,7 @@ export default function Navbar() {
       <div className="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
         {/* Logo */}
         <Link href="/">
-          <Image src="/logo.png" alt="Pure O Water" width={160} height={56} className="h-12 w-auto" priority />
+          <Image src="/dtla-water-logo.png" alt="DTLA Water" width={122} height={56} className="h-12 w-auto" priority />
         </Link>
 
         {/* Desktop links */}
@@ -26,7 +26,7 @@ export default function Navbar() {
             <li key={link.label}>
               <a
                 href={link.href}
-                className="text-[#0d2b4e] hover:text-[#1e90d6] text-sm font-medium tracking-wide transition-colors"
+                className="text-[#1B3A6B] hover:text-[#29ABE2] text-sm font-medium tracking-wide transition-colors"
               >
                 {link.label}
               </a>
@@ -35,7 +35,7 @@ export default function Navbar() {
           <li>
             <a
               href="#order"
-              className="bg-[#00c9e4] text-[#0d2b4e] px-5 py-2.5 rounded-lg text-sm font-bold hover:bg-[#00dff8] transition-all hover:-translate-y-0.5 shadow-sm"
+              className="bg-[#111111] text-white px-5 py-2.5 rounded-lg text-sm font-bold hover:bg-[#2a2a2a] transition-all hover:-translate-y-0.5 shadow-sm"
             >
               Start My Delivery →
             </a>
@@ -44,14 +44,14 @@ export default function Navbar() {
 
         {/* Mobile hamburger */}
         <button
-          className="md:hidden text-[#0d2b4e] p-2"
+          className="md:hidden text-[#1B3A6B] p-2"
           onClick={() => setMenuOpen(!menuOpen)}
           aria-label="Toggle menu"
         >
           <div className="space-y-1.5">
-            <span className={`block h-0.5 w-6 bg-[#0d2b4e] transition-all ${menuOpen ? 'rotate-45 translate-y-2' : ''}`} />
-            <span className={`block h-0.5 w-6 bg-[#0d2b4e] transition-all ${menuOpen ? 'opacity-0' : ''}`} />
-            <span className={`block h-0.5 w-6 bg-[#0d2b4e] transition-all ${menuOpen ? '-rotate-45 -translate-y-2' : ''}`} />
+            <span className={`block h-0.5 w-6 bg-[#1B3A6B] transition-all ${menuOpen ? 'rotate-45 translate-y-2' : ''}`} />
+            <span className={`block h-0.5 w-6 bg-[#1B3A6B] transition-all ${menuOpen ? 'opacity-0' : ''}`} />
+            <span className={`block h-0.5 w-6 bg-[#1B3A6B] transition-all ${menuOpen ? '-rotate-45 -translate-y-2' : ''}`} />
           </div>
         </button>
       </div>
@@ -63,7 +63,7 @@ export default function Navbar() {
             <a
               key={item}
               href={item === 'Service Areas' ? '/#areas' : `/${item.toLowerCase().replace(/ /g, '-')}`}
-              className="block text-[#0d2b4e] py-2 text-sm font-medium"
+              className="block text-[#1B3A6B] py-2 text-sm font-medium"
               onClick={() => setMenuOpen(false)}
             >
               {item}
@@ -71,7 +71,7 @@ export default function Navbar() {
           ))}
           <a
             href="#order"
-            className="block bg-[#00c9e4] text-[#0d2b4e] text-center py-3 rounded-lg font-bold text-sm mt-2"
+            className="block bg-[#111111] text-white text-center py-3 rounded-lg font-bold text-sm mt-2"
             onClick={() => setMenuOpen(false)}
           >
             Start My Delivery →

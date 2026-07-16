@@ -37,8 +37,8 @@ DATABASE_URL="file:./dev.db"
 # Resend — get your key at resend.com (free tier works)
 RESEND_API_KEY="re_your_key_here"
 
-# Joseph's email for order + contact notifications
-JOSEPH_EMAIL="joseph@pureowater.com"
+# Owner's email for order + contact notifications
+OWNER_EMAIL="owner@dtlawater.com"
 
 # Public URL (no trailing slash)
 NEXT_PUBLIC_SITE_URL="https://pureowater.com"

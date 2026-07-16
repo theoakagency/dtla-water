@@ -68,23 +68,23 @@ export default function OffersPage() {
                 key={offer.title}
                 className={`rounded-2xl border-2 overflow-hidden ${
                   offer.highlight
-                    ? 'border-[#00c9e4] bg-gradient-to-r from-[#e8f6fb] to-white'
+                    ? 'border-[#29ABE2] bg-gradient-to-r from-[#F5F8FB] to-white'
                     : 'border-[#d0e4ef] bg-white'
                 }`}
               >
                 <div className="p-8 grid grid-cols-1 lg:grid-cols-3 gap-8 items-center">
                   <div className="lg:col-span-2">
-                    <span className="inline-block text-xs font-bold text-[#1e90d6] bg-[#e8f6fb] px-3 py-1 rounded-full mb-3">
+                    <span className="inline-block text-xs font-bold text-[#29ABE2] bg-[#F5F8FB] px-3 py-1 rounded-full mb-3">
                       {offer.badge}
                     </span>
-                    <h2 className="text-2xl font-bold text-[#0d2b4e] mb-3" style={{ fontFamily: 'var(--font-playfair)' }}>
+                    <h2 className="text-2xl font-bold text-[#1B3A6B] mb-3" style={{ fontFamily: 'var(--font-heading)' }}>
                       {offer.title}
                     </h2>
                     <p className="text-[#5a7080] leading-relaxed mb-5">{offer.desc}</p>
                     <ul className="space-y-2">
                       {offer.details.map((d) => (
-                        <li key={d} className="flex items-start gap-2 text-sm text-[#1a2a3a]">
-                          <Check size={14} className="text-[#00c9e4] flex-shrink-0 mt-0.5" />
+                        <li key={d} className="flex items-start gap-2 text-sm text-[#1A1A1A]">
+                          <Check size={14} className="text-[#29ABE2] flex-shrink-0 mt-0.5" />
                           {d}
                         </li>
                       ))}
@@ -95,8 +95,8 @@ export default function OffersPage() {
                       href={offer.href}
                       className={`inline-flex items-center gap-2 px-7 py-4 rounded-xl font-bold text-sm transition-all hover:-translate-y-0.5 ${
                         offer.highlight
-                          ? 'bg-[#00c9e4] text-[#0d2b4e] hover:bg-[#00dff8] hover:shadow-[0_8px_32px_rgba(0,201,228,0.35)]'
-                          : 'bg-[#0d2b4e] text-white hover:bg-[#1565c0]'
+                          ? 'bg-[#111111] text-white hover:bg-[#2a2a2a] hover:shadow-[0_8px_32px_rgba(0,201,228,0.35)]'
+                          : 'bg-[#1B3A6B] text-white hover:bg-[#2A5A96]'
                       }`}
                     >
                       {offer.cta} →

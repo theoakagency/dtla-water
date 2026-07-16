@@ -105,13 +105,13 @@ const categories = [
 function AccordionItem({ q, a }: { q: string; a: string }) {
   const [open, setOpen] = useState(false)
   return (
-    <div className={`border rounded-xl overflow-hidden transition-all ${open ? 'border-[#1e90d6]' : 'border-[#d0e4ef]'}`}>
+    <div className={`border rounded-xl overflow-hidden transition-all ${open ? 'border-[#29ABE2]' : 'border-[#d0e4ef]'}`}>
       <button
         onClick={() => setOpen(!open)}
         className="w-full flex items-center justify-between px-6 py-4 text-left gap-4"
       >
-        <span className="font-semibold text-[#0d2b4e] text-sm leading-snug">{q}</span>
-        <span className={`flex-shrink-0 w-6 h-6 rounded-full border border-[#d0e4ef] flex items-center justify-center text-[#1e90d6] text-xs transition-transform ${open ? 'rotate-45 bg-[#e8f6fb]' : ''}`}>
+        <span className="font-semibold text-[#1B3A6B] text-sm leading-snug">{q}</span>
+        <span className={`flex-shrink-0 w-6 h-6 rounded-full border border-[#d0e4ef] flex items-center justify-center text-[#29ABE2] text-xs transition-transform ${open ? 'rotate-45 bg-[#F5F8FB]' : ''}`}>
           +
         </span>
       </button>
@@ -153,8 +153,8 @@ export default function FAQPage() {
                     onClick={() => setActiveCategory(i)}
                     className={`flex items-center gap-2 px-4 py-2.5 rounded-xl text-sm font-semibold transition-all ${
                       activeCategory === i
-                        ? 'bg-[#0d2b4e] text-white'
-                        : 'bg-[#f4f7fa] text-[#5a7080] hover:bg-[#e8f6fb] hover:text-[#0d2b4e]'
+                        ? 'bg-[#1B3A6B] text-white'
+                        : 'bg-[#F5F8FB] text-[#5a7080] hover:bg-[#F5F8FB] hover:text-[#1B3A6B]'
                     }`}
                   >
                     <Icon size={15} />
@@ -172,16 +172,16 @@ export default function FAQPage() {
             </div>
 
             {/* Still have questions */}
-            <div className="mt-14 bg-[#f4f7fa] rounded-2xl p-8 text-center">
-              <h3 className="text-2xl font-bold text-[#0d2b4e] mb-2" style={{ fontFamily: 'var(--font-playfair)' }}>
+            <div className="mt-14 bg-[#F5F8FB] rounded-2xl p-8 text-center">
+              <h3 className="text-2xl font-bold text-[#1B3A6B] mb-2" style={{ fontFamily: 'var(--font-heading)' }}>
                 Still have questions?
               </h3>
               <p className="text-[#5a7080] mb-6">We&apos;re happy to help. Reach out and we&apos;ll get back to you the same business day.</p>
               <div className="flex flex-wrap gap-4 justify-center">
-                <a href="/contact" className="inline-flex items-center gap-2 bg-[#0d2b4e] text-white px-6 py-3 rounded-lg font-bold text-sm hover:bg-[#1565c0] transition-all">
+                <a href="/contact" className="inline-flex items-center gap-2 bg-[#1B3A6B] text-white px-6 py-3 rounded-lg font-bold text-sm hover:bg-[#2A5A96] transition-all">
                   Contact Us →
                 </a>
-                <a href="/contact" className="border border-[#d0e4ef] text-[#0d2b4e] px-6 py-3 rounded-lg font-semibold text-sm hover:border-[#1e90d6] hover:text-[#1e90d6] transition-all">
+                <a href="/contact" className="border border-[#d0e4ef] text-[#1B3A6B] px-6 py-3 rounded-lg font-semibold text-sm hover:border-[#29ABE2] hover:text-[#29ABE2] transition-all">
                   Send a Message →
                 </a>
               </div>

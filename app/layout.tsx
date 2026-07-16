@@ -1,17 +1,17 @@
 import type { Metadata } from 'next'
-import { DM_Sans, Playfair_Display } from 'next/font/google'
+import { Inter, Archivo } from 'next/font/google'
 import Script from 'next/script'
 import './globals.css'
 
-const dmSans = DM_Sans({
+const inter = Inter({
   subsets: ['latin'],
-  variable: '--font-dm-sans',
+  variable: '--font-body',
   display: 'swap',
 })
 
-const playfair = Playfair_Display({
+const archivo = Archivo({
   subsets: ['latin'],
-  variable: '--font-playfair',
+  variable: '--font-heading',
   display: 'swap',
 })
 
@@ -45,9 +45,9 @@ export const metadata: Metadata = {
       'Premium purified and alkaline water delivery for homes and businesses across Southern California.',
     images: [
       {
-        url: '/og-image.png',
-        width: 1200,
-        height: 630,
+        url: '/dtla-water-logo.png',
+        width: 700,
+        height: 322,
         alt: 'Pure O Water – Premium Water Delivery',
       },
     ],
@@ -56,12 +56,12 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'Pure O Water – Premium Water Delivery',
     description: 'Purified & alkaline water delivered to your door. No contracts, cancel anytime.',
-    images: ['/og-image.png'],
+    images: ['/dtla-water-logo.png'],
   },
   icons: {
-    icon: '/favicon.png',
-    shortcut: '/favicon.png',
-    apple: '/favicon.png',
+    icon: '/dtla-water-logo.png',
+    shortcut: '/dtla-water-logo.png',
+    apple: '/dtla-water-logo.png',
   },
   robots: {
     index: true,
@@ -150,8 +150,8 @@ const localBusinessSchema = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={`${dmSans.variable} ${playfair.variable}`}>
-      <body className={dmSans.className}>
+    <html lang="en" className={`${inter.variable} ${archivo.variable}`}>
+      <body className={inter.className}>
         {children}
         <Script
           id="local-business-schema"

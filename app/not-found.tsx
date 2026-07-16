@@ -7,13 +7,13 @@ export default function NotFound() {
   return (
     <>
       <Navbar />
-      <main className="min-h-[80vh] flex items-center justify-center px-6 bg-gradient-to-br from-[#061c35] to-[#0d2b4e]">
+      <main className="min-h-[80vh] flex items-center justify-center px-6 bg-gradient-to-br from-[#12233F] to-[#1B3A6B]">
         <div className="text-center max-w-lg">
           <div className="w-24 h-24 rounded-full bg-white/10 flex items-center justify-center mx-auto mb-6">
-            <Droplets size={48} className="text-[#00c9e4]" />
+            <Droplets size={48} className="text-[#29ABE2]" />
           </div>
-          <h1 className="text-6xl font-bold text-white mb-4" style={{ fontFamily: 'var(--font-playfair)' }}>404</h1>
-          <h2 className="text-2xl font-bold text-white mb-4" style={{ fontFamily: 'var(--font-playfair)' }}>
+          <h1 className="text-6xl font-bold text-white mb-4" style={{ fontFamily: 'var(--font-heading)' }}>404</h1>
+          <h2 className="text-2xl font-bold text-white mb-4" style={{ fontFamily: 'var(--font-heading)' }}>
             Page Not Found
           </h2>
           <p className="text-white/60 text-lg mb-8 leading-relaxed">
@@ -22,7 +22,7 @@ export default function NotFound() {
           <div className="flex flex-wrap gap-4 justify-center">
             <Link
               href="/"
-              className="bg-[#00c9e4] text-[#0d2b4e] px-8 py-4 rounded-lg font-bold hover:bg-[#00dff8] transition-all"
+              className="bg-[#111111] text-white px-8 py-4 rounded-lg font-bold hover:bg-[#2a2a2a] transition-all"
             >
               Go Home
             </Link>

@@ -26,7 +26,7 @@ export async function POST(req: NextRequest) {
     // Notify Joseph
     await resend.emails.send({
       from: 'Pure O Water <contact@pureowater.com>',
-      to: process.env.JOSEPH_EMAIL as string,
+      to: process.env.OWNER_EMAIL as string,
       replyTo: email,
       subject: `Contact Form: ${subject || 'General Inquiry'} — ${name}`,
       html: `

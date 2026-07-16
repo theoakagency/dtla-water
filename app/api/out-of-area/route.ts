@@ -16,7 +16,7 @@ export async function POST(req: NextRequest) {
 
     await resend.emails.send({
       from: 'Pure O Water <orders@pureowater.com>',
-      to: process.env.JOSEPH_EMAIL as string,
+      to: process.env.OWNER_EMAIL as string,
       subject: `Sister Company Referral — ${firstName} ${lastName} (ZIP: ${zip})`,
       html: `
         <div style="font-family:Arial,sans-serif;max-width:600px;margin:0 auto;">
