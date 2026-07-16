@@ -1,5 +1,5 @@
 import type { Metadata } from 'next'
-import { Inter, Archivo } from 'next/font/google'
+import { Inter, Barlow_Condensed } from 'next/font/google'
 import Script from 'next/script'
 import './globals.css'
 
@@ -9,52 +9,56 @@ const inter = Inter({
   display: 'swap',
 })
 
-const archivo = Archivo({
+// Barlow Condensed isn't a variable font in next/font's dataset, so weights
+// must be listed explicitly — 700 covers every heading usage (Tailwind's
+// font-bold), 600 is included as a safety net for any semibold headings.
+const barlowCondensed = Barlow_Condensed({
   subsets: ['latin'],
+  weight: ['600', '700'],
   variable: '--font-heading',
   display: 'swap',
 })
 
-const BASE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://pureowater.com'
+const BASE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://dtlawater.com'
 
 export const metadata: Metadata = {
   metadataBase: new URL(BASE_URL),
   title: {
-    default: 'Pure O Water – Premium Water Delivery | Ventura County',
-    template: '%s | Pure O Water',
+    default: 'DTLA Water – Premium Water Delivery | Downtown Los Angeles',
+    template: '%s | DTLA Water',
   },
   description:
-    'Premium purified and alkaline water delivery for homes, offices, and businesses across Ventura County, Santa Clarita, and the Antelope Valley.',
+    'Premium purified and alkaline water delivery for offices, industrial facilities, events, and film productions across Downtown Los Angeles.',
   keywords: [
     'water delivery',
     'alkaline water delivery',
     'purified water delivery',
-    'Ventura County water delivery',
-    'Santa Clarita water delivery',
-    'Antelope Valley water delivery',
-    'office water delivery',
+    'Downtown LA water delivery',
+    'Los Angeles office water delivery',
+    'industrial water delivery Los Angeles',
+    'film production water delivery',
     'pH 9.5 alkaline water',
   ],
   openGraph: {
     type: 'website',
     locale: 'en_US',
     url: BASE_URL,
-    siteName: 'Pure O Water',
-    title: 'Pure O Water – Premium Water Delivery | Ventura County',
+    siteName: 'DTLA Water',
+    title: 'DTLA Water – Premium Water Delivery | Downtown Los Angeles',
     description:
-      'Premium purified and alkaline water delivery for homes and businesses across Southern California.',
+      'Premium purified and alkaline water delivery for offices, industrial facilities, events, and film productions across Downtown Los Angeles.',
     images: [
       {
         url: '/dtla-water-logo.png',
         width: 700,
         height: 322,
-        alt: 'Pure O Water – Premium Water Delivery',
+        alt: 'DTLA Water – Premium Water Delivery',
       },
     ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Pure O Water – Premium Water Delivery',
+    title: 'DTLA Water – Premium Water Delivery',
     description: 'Purified & alkaline water delivered to your door. No contracts, cancel anytime.',
     images: ['/dtla-water-logo.png'],
   },
@@ -78,34 +82,36 @@ export const metadata: Metadata = {
 const localBusinessSchema = {
   '@context': 'https://schema.org',
   '@type': 'LocalBusiness',
-  name: 'Pure O Water',
+  name: 'DTLA Water',
   description:
-    'Premium purified and alkaline water delivery for homes, offices, and businesses across Southern California.',
+    'Premium purified and alkaline water delivery for offices, industrial facilities, events, and film productions across Downtown Los Angeles.',
   url: BASE_URL,
-  telephone: '+18445227000',
-  email: 'hello@pureowater.com',
-  foundingDate: '2005',
+  telephone: '+12133714500',
+  email: 'owner@dtlawater.com', // ⚠️ placeholder — confirm real inbox
   priceRange: '$$',
   servesCuisine: null,
   address: {
     '@type': 'PostalAddress',
-    addressLocality: 'Oxnard',
+    streetAddress: '1360 South Figueroa Street',
+    addressLocality: 'Los Angeles',
     addressRegion: 'CA',
+    postalCode: '90015',
     addressCountry: 'US',
   },
+  // ⚠️ approximate coordinates for 1360 S Figueroa St — verify exact geocode before launch
   geo: {
     '@type': 'GeoCoordinates',
-    latitude: 34.1975,
-    longitude: -119.1771,
+    latitude: 34.0407,
+    longitude: -118.2685,
   },
   areaServed: [
-    { '@type': 'City', name: 'Oxnard' },
-    { '@type': 'City', name: 'Ventura' },
-    { '@type': 'City', name: 'Santa Clarita' },
-    { '@type': 'City', name: 'Palmdale' },
-    { '@type': 'City', name: 'Lancaster' },
-    { '@type': 'City', name: 'Thousand Oaks' },
-    { '@type': 'City', name: 'Simi Valley' },
+    { '@type': 'City', name: 'Downtown LA' },
+    { '@type': 'City', name: 'Koreatown' },
+    { '@type': 'City', name: 'Hollywood' },
+    { '@type': 'City', name: 'Culver City' },
+    { '@type': 'City', name: 'Burbank' },
+    { '@type': 'City', name: 'Glendale' },
+    { '@type': 'City', name: 'Pasadena' },
   ],
   openingHoursSpecification: [
     {
@@ -141,16 +147,16 @@ const localBusinessSchema = {
       },
     ],
   },
+  // ⚠️ placeholder handles — confirm real DTLA Water social accounts
   sameAs: [
-    'https://www.facebook.com/pureowater',
-    'https://www.instagram.com/pureowater',
-    'https://www.yelp.com/biz/pure-o-water',
+    'https://www.facebook.com/dtlawater',
+    'https://www.instagram.com/dtlawater',
   ],
 }
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={`${inter.variable} ${archivo.variable}`}>
+    <html lang="en" className={`${inter.variable} ${barlowCondensed.variable}`}>
       <body className={inter.className}>
         {children}
         <Script

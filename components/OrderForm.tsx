@@ -164,7 +164,7 @@ export default function OrderForm() {
               {/* Phone */}
               <div className="mb-4">
                 <label className="block text-xs font-semibold text-[#1B3A6B] mb-1.5">Phone Number</label>
-                <input type="tel" placeholder="(805) 555-0100" value={form.phone} onChange={set('phone')} className={inputClass('phone')} />
+                <input type="tel" placeholder="(213) 555-0100" value={form.phone} onChange={set('phone')} className={inputClass('phone')} />
                 {errors.phone && <p className="text-red-500 text-xs mt-1">{errors.phone}</p>}
               </div>
 
@@ -186,12 +186,12 @@ export default function OrderForm() {
               <div className="grid grid-cols-2 gap-3 mb-4">
                 <div>
                   <label className="block text-xs font-semibold text-[#1B3A6B] mb-1.5">City</label>
-                  <input type="text" placeholder="Oxnard" value={form.city} onChange={set('city')} className={inputClass('city')} />
+                  <input type="text" placeholder="Los Angeles" value={form.city} onChange={set('city')} className={inputClass('city')} />
                   {errors.city && <p className="text-red-500 text-xs mt-1">{errors.city}</p>}
                 </div>
                 <div>
                   <label className="block text-xs font-semibold text-[#1B3A6B] mb-1.5">Zip Code</label>
-                  <input type="text" placeholder="93030" maxLength={5} value={form.zip} onChange={set('zip')} className={inputClass('zip')} />
+                  <input type="text" placeholder="90015" maxLength={5} value={form.zip} onChange={set('zip')} className={inputClass('zip')} />
                   {errors.zip && <p className="text-red-500 text-xs mt-1">{errors.zip}</p>}
                 </div>
               </div>

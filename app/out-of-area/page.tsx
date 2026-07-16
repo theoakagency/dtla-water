@@ -182,7 +182,7 @@ function OutOfAreaForm() {
       </button>
 
       <p className="text-[#5a7080] text-xs text-center leading-relaxed">
-        By submitting, you agree to be contacted by Pure O Water or a trusted partner. No spam, ever.
+        By submitting, you agree to be contacted by DTLA Water or a trusted partner. No spam, ever.
       </p>
     </form>
   )

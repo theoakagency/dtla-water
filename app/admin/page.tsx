@@ -92,7 +92,7 @@ export default function AdminLoginPage() {
         </div>
 
         <p className="text-center text-white/30 text-xs mt-6">
-          © 2025 Pure O Water — Admin Access Only
+          © 2026 DTLA Water — Admin Access Only
         </p>
       </div>
     </div>

@@ -7,8 +7,8 @@ import { cities } from '@/lib/cities'
 import { services } from '@/lib/services'
 
 export const metadata: Metadata = {
-  title: 'Sitemap | Pure O Water',
-  description: 'Complete sitemap of all Pure O Water pages — service areas, products, and more.',
+  title: 'Sitemap | DTLA Water',
+  description: 'Complete sitemap of all DTLA Water pages — service areas, products, and more.',
 }
 
 const staticPages = [
@@ -28,7 +28,7 @@ export default function SitemapPage() {
         <PageHero
           badge="Site Navigation"
           title="Sitemap"
-          subtitle="A complete list of all pages on the Pure O Water website."
+          subtitle="A complete list of all pages on the DTLA Water website."
           breadcrumbs={[{ label: 'Sitemap', href: '#' }]}
           compact
         />
@@ -84,47 +84,23 @@ export default function SitemapPage() {
             {/* Right column */}
             <div className="space-y-10">
 
-              {/* Ventura County cities */}
+              {/* Service areas */}
               <div>
                 <h2 className="text-xs font-bold tracking-[0.12em] uppercase text-[#29ABE2] mb-4">
-                  Ventura County Service Areas
+                  Service Areas
                 </h2>
                 <ul className="space-y-2">
-                  {cities
-                    .filter((c) => c.county === 'Ventura County')
-                    .map((city) => (
-                      <li key={city.slug}>
-                        <Link
-                          href={`/areas/${city.slug}`}
-                          className="flex items-center gap-2 text-[#1B3A6B] hover:text-[#29ABE2] transition-colors text-sm font-medium group"
-                        >
-                          <span className="w-1.5 h-1.5 rounded-full bg-[#29ABE2] flex-shrink-0 group-hover:scale-125 transition-transform" />
-                          Water Delivery in {city.name}, CA
-                        </Link>
-                      </li>
-                    ))}
-                </ul>
-              </div>
-
-              {/* LA County cities */}
-              <div>
-                <h2 className="text-xs font-bold tracking-[0.12em] uppercase text-[#29ABE2] mb-4">
-                  Los Angeles County Service Areas
-                </h2>
-                <ul className="space-y-2">
-                  {cities
-                    .filter((c) => c.county === 'Los Angeles County')
-                    .map((city) => (
-                      <li key={city.slug}>
-                        <Link
-                          href={`/areas/${city.slug}`}
-                          className="flex items-center gap-2 text-[#1B3A6B] hover:text-[#29ABE2] transition-colors text-sm font-medium group"
-                        >
-                          <span className="w-1.5 h-1.5 rounded-full bg-[#29ABE2] flex-shrink-0 group-hover:scale-125 transition-transform" />
-                          Water Delivery in {city.name}, CA
-                        </Link>
-                      </li>
-                    ))}
+                  {cities.map((city) => (
+                    <li key={city.slug}>
+                      <Link
+                        href={`/areas/${city.slug}`}
+                        className="flex items-center gap-2 text-[#1B3A6B] hover:text-[#29ABE2] transition-colors text-sm font-medium group"
+                      >
+                        <span className="w-1.5 h-1.5 rounded-full bg-[#29ABE2] flex-shrink-0 group-hover:scale-125 transition-transform" />
+                        Water Delivery in {city.name}, CA
+                      </Link>
+                    </li>
+                  ))}
                 </ul>
               </div>
 

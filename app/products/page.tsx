@@ -6,7 +6,7 @@ import { Microscope, Gem, Smile, Plug, FlaskConical, Leaf, BarChart2, Zap, Shiel
 import OrderForm from '@/components/OrderForm'
 
 export const metadata: Metadata = {
-  title: 'Our Products | Pure O Water',
+  title: 'Our Products | DTLA Water',
   description: 'Premium purified water and alkaline water (pH 9.5) delivered to your home or office. 10-stage filtration, organic mineral blend, available in 3 and 5 gallon bottles.',
 }
 
@@ -44,7 +44,7 @@ export default function ProductsPage() {
       <Navbar />
       <main>
         <PageHero
-          badge="Pure O Water Products"
+          badge="DTLA Water Products"
           title="Two Choices."
           titleAccent="One Standard of Excellence."
           subtitle="Every bottle is produced through a rigorous 10-stage filtration process at our local facility before it reaches your door."

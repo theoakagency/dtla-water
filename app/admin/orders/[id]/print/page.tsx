@@ -180,7 +180,7 @@ export default function PrintOrderPage() {
         {/* Footer */}
         <div className="border-t border-[#d0e4ef] pt-5 text-center">
           <p className="text-xs text-[#5a7080]">
-            Pure O Water · (844) 522-7000 · pureowater.com · Southern California
+            DTLA Water · (213) 371-4500 · dtlawater.com · Downtown Los Angeles
           </p>
           <p className="text-xs text-[#b0bec5] mt-1 italic">
             Small Enough To Care. Big Enough To Deliver.

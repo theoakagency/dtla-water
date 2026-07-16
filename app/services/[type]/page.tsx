@@ -45,7 +45,7 @@ export default async function ServicePage(
   const service = getServiceBySlug(type)
   if (!service) notFound()
 
-  const BASE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://pureowater.com'
+  const BASE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://dtlawater.com'
 
   const schema = {
     '@context': 'https://schema.org',
@@ -54,8 +54,8 @@ export default async function ServicePage(
     description: service.heroDesc,
     provider: {
       '@type': 'LocalBusiness',
-      name: 'Pure O Water',
-      telephone: '+18445227000',
+      name: 'DTLA Water',
+      telephone: '+12133714500',
       url: BASE_URL,
     },
     url: `${BASE_URL}/services/${service.slug}`,

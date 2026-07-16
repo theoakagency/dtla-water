@@ -2,7 +2,7 @@ import { MetadataRoute } from 'next'
 import { cities } from '@/lib/cities'
 import { services } from '@/lib/services'
 
-const BASE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://pureowater.com'
+const BASE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://dtlawater.com'
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const now = new Date()

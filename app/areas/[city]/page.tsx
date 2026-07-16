@@ -22,7 +22,7 @@ export async function generateMetadata(
   if (!city) return {}
 
   return {
-    title: `Water Delivery in ${city.name}, CA | Pure O Water`,
+    title: `Water Delivery in ${city.name}, CA | DTLA Water`,
     description: `Premium purified and alkaline water delivery in ${city.name}, ${city.county}. ${city.heroDesc} Start your delivery today.`,
     keywords: `water delivery ${city.name}, alkaline water ${city.name}, purified water delivery ${city.county}, ${city.name} water service`,
   }
@@ -35,7 +35,7 @@ export default async function CityPage(
   const city = getCityBySlug(citySlug)
   if (!city) notFound()
 
-  const BASE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://pureowater.com'
+  const BASE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://dtlawater.com'
 
   const citySchema = {
     '@context': 'https://schema.org',
@@ -44,8 +44,8 @@ export default async function CityPage(
     description: city.heroDesc,
     provider: {
       '@type': 'LocalBusiness',
-      name: 'Pure O Water',
-      telephone: '+18445227000',
+      name: 'DTLA Water',
+      telephone: '+12133714500',
       url: BASE_URL,
     },
     areaServed: {
@@ -58,7 +58,7 @@ export default async function CityPage(
   }
 
   const trustItems = [
-    { icon: Truck,      label: `Delivering to ${city.name} since 2005` },
+    { icon: Truck,      label: `Serving ${city.name} for 20+ Years` },
     { icon: ShieldCheck, label: 'Locally Owned Business' },
     { icon: CalendarX2, label: 'No Long-Term Contract' },
   ]

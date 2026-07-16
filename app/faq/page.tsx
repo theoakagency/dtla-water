@@ -52,7 +52,7 @@ const categories = [
       },
       {
         q: 'Where is your water sourced and purified?',
-        a: 'Our water is locally sourced and purified at our facility right here in Ventura County using a 10-stage filtration process that includes sediment filters, carbon blocks, reverse osmosis, and UV sterilization.',
+        a: 'Our water is locally sourced and purified at our facility right here in the Los Angeles area using a 10-stage filtration process that includes sediment filters, carbon blocks, reverse osmosis, and UV sterilization.',
       },
     ],
   },
@@ -70,7 +70,7 @@ const categories = [
       },
       {
         q: 'What areas do you deliver to?',
-        a: 'We currently deliver to Oxnard, Ventura, Santa Clarita, the Antelope Valley (Palmdale & Lancaster), Thousand Oaks, Simi Valley, and surrounding areas. Use the zip code checker on our homepage to confirm delivery to your address.',
+        a: 'We currently deliver to Downtown LA, Koreatown, Echo Park & Silver Lake, Boyle Heights, Mid-Wilshire, Hollywood, Vernon, Culver City, Burbank, Glendale, Pasadena, and surrounding areas. Use the zip code checker on our homepage to confirm delivery to your address.',
       },
       {
         q: 'What if I\'m not home during delivery?',
@@ -136,7 +136,7 @@ export default function FAQPage() {
           badge="Help Center"
           title="Frequently Asked"
           titleAccent="Questions"
-          subtitle="Everything you need to know about Pure O Water delivery. Can't find your answer? Visit our contact page."
+          subtitle="Everything you need to know about DTLA Water delivery. Can't find your answer? Visit our contact page."
           breadcrumbs={[{ label: 'FAQ', href: '#' }]}
           compact
         />

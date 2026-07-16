@@ -66,7 +66,7 @@ export async function GET(req: NextRequest) {
   return new NextResponse(csv, {
     headers: {
       'Content-Type': 'text/csv',
-      'Content-Disposition': `attachment; filename="pureowater-orders-${new Date().toISOString().split('T')[0]}.csv"`,
+      'Content-Disposition': `attachment; filename="dtla-water-orders-${new Date().toISOString().split('T')[0]}.csv"`,
     },
   })
 }

@@ -43,30 +43,30 @@ export async function POST(req: NextRequest) {
       },
     })
 
-    // Send notification to Joseph
+    // Send notification to owner
     await resend.emails.send({
-      from: 'Pure O Water <orders@pureowater.com>',
+      from: 'DTLA Water <orders@dtlawater.com>',
       to: process.env.OWNER_EMAIL as string,
       subject: `New Order Request — ${firstName} ${lastName} (${city})`,
       html: `
         <div style="font-family:Arial,sans-serif;max-width:600px;margin:0 auto;">
-          <div style="background:#0d2b4e;padding:24px 32px;">
+          <div style="background:#1B3A6B;padding:24px 32px;">
             <h1 style="color:#fff;margin:0;font-size:22px;">New Order Request</h1>
-            <p style="color:#00c9e4;margin:6px 0 0;font-size:14px;">Pure O Water — Order #${order.id}</p>
+            <p style="color:#29ABE2;margin:6px 0 0;font-size:14px;">DTLA Water — Order #${order.id}</p>
           </div>
 
-          <div style="padding:32px;background:#f4f7fa;">
+          <div style="padding:32px;background:#F5F8FB;">
             <table style="width:100%;border-collapse:collapse;background:#fff;border-radius:8px;overflow:hidden;">
-              <tr style="background:#e8f6fb;">
-                <td colspan="2" style="padding:12px 16px;font-weight:bold;color:#0d2b4e;font-size:13px;text-transform:uppercase;letter-spacing:.05em;">Customer Info</td>
+              <tr style="background:#F5F8FB;">
+                <td colspan="2" style="padding:12px 16px;font-weight:bold;color:#1B3A6B;font-size:13px;text-transform:uppercase;letter-spacing:.05em;">Customer Info</td>
               </tr>
               <tr><td style="padding:10px 16px;color:#5a7080;font-size:14px;width:40%;">Name</td><td style="padding:10px 16px;font-size:14px;font-weight:600;">${firstName} ${lastName}</td></tr>
-              <tr style="background:#fafafa;"><td style="padding:10px 16px;color:#5a7080;font-size:14px;">Phone</td><td style="padding:10px 16px;font-size:14px;"><a href="tel:${phone}" style="color:#1e90d6;">${phone}</a></td></tr>
-              <tr><td style="padding:10px 16px;color:#5a7080;font-size:14px;">Email</td><td style="padding:10px 16px;font-size:14px;"><a href="mailto:${email}" style="color:#1e90d6;">${email}</a></td></tr>
+              <tr style="background:#fafafa;"><td style="padding:10px 16px;color:#5a7080;font-size:14px;">Phone</td><td style="padding:10px 16px;font-size:14px;"><a href="tel:${phone}" style="color:#29ABE2;">${phone}</a></td></tr>
+              <tr><td style="padding:10px 16px;color:#5a7080;font-size:14px;">Email</td><td style="padding:10px 16px;font-size:14px;"><a href="mailto:${email}" style="color:#29ABE2;">${email}</a></td></tr>
               <tr style="background:#fafafa;"><td style="padding:10px 16px;color:#5a7080;font-size:14px;">Address</td><td style="padding:10px 16px;font-size:14px;">${address}, ${city}, CA ${zip}</td></tr>
 
-              <tr style="background:#e8f6fb;">
-                <td colspan="2" style="padding:12px 16px;font-weight:bold;color:#0d2b4e;font-size:13px;text-transform:uppercase;letter-spacing:.05em;">Order Details</td>
+              <tr style="background:#F5F8FB;">
+                <td colspan="2" style="padding:12px 16px;font-weight:bold;color:#1B3A6B;font-size:13px;text-transform:uppercase;letter-spacing:.05em;">Order Details</td>
               </tr>
               <tr><td style="padding:10px 16px;color:#5a7080;font-size:14px;">Water Type</td><td style="padding:10px 16px;font-size:14px;font-weight:600;">${waterType}</td></tr>
               <tr style="background:#fafafa;"><td style="padding:10px 16px;color:#5a7080;font-size:14px;">Bottle Size</td><td style="padding:10px 16px;font-size:14px;">${bottleSize}</td></tr>
@@ -76,7 +76,7 @@ export async function POST(req: NextRequest) {
             </table>
 
             <div style="margin-top:24px;text-align:center;">
-              <a href="${process.env.NEXT_PUBLIC_SITE_URL}/admin" style="display:inline-block;background:#1e90d6;color:#fff;padding:14px 28px;border-radius:8px;font-weight:700;text-decoration:none;font-size:15px;">
+              <a href="${process.env.NEXT_PUBLIC_SITE_URL}/admin" style="display:inline-block;background:#29ABE2;color:#fff;padding:14px 28px;border-radius:8px;font-weight:700;text-decoration:none;font-size:15px;">
                 View in Admin Dashboard →
               </a>
             </div>
@@ -87,44 +87,44 @@ export async function POST(req: NextRequest) {
 
     // Send confirmation to customer
     await resend.emails.send({
-      from: 'Pure O Water <hello@pureowater.com>',
+      from: 'DTLA Water <hello@dtlawater.com>',
       to: email,
-      subject: `Your Pure O Water delivery request is confirmed!`,
+      subject: `Your DTLA Water delivery request is confirmed!`,
       html: `
         <div style="font-family:Arial,sans-serif;max-width:600px;margin:0 auto;">
-          <div style="background:#0d2b4e;padding:24px 32px;text-align:center;">
+          <div style="background:#1B3A6B;padding:24px 32px;text-align:center;">
             <h1 style="color:#fff;margin:0;font-size:24px;">You're all set, ${firstName}!</h1>
-            <p style="color:#00c9e4;margin:8px 0 0;font-size:15px;">We&apos;ll be in touch to confirm your delivery</p>
+            <p style="color:#29ABE2;margin:8px 0 0;font-size:15px;">We&apos;ll be in touch to confirm your delivery</p>
           </div>
 
           <div style="padding:32px;">
-            <p style="color:#1a2a3a;font-size:15px;line-height:1.7;">
-              Thanks for choosing Pure O Water! We received your delivery request and will contact you
+            <p style="color:#1A1A1A;font-size:15px;line-height:1.7;">
+              Thanks for choosing DTLA Water! We received your delivery request and will contact you
               within <strong>1 business day</strong> to confirm your first delivery date.
             </p>
 
-            <div style="background:#e8f6fb;border-radius:10px;padding:20px 24px;margin:24px 0;">
-              <h3 style="color:#0d2b4e;margin:0 0 12px;font-size:15px;">Your order summary:</h3>
-              <p style="margin:4px 0;font-size:14px;color:#1a2a3a;"><strong>${waterType}</strong> — ${bottleSize}</p>
-              <p style="margin:4px 0;font-size:14px;color:#1a2a3a;">${bottlesPerDelivery} for your first delivery</p>
-              <p style="margin:4px 0;font-size:14px;color:#1a2a3a;">Deliveries scheduled every 2 weeks to start</p>
-              <p style="margin:4px 0;font-size:14px;color:#1a2a3a;">${address}, ${city}, CA ${zip}</p>
+            <div style="background:#F5F8FB;border-radius:10px;padding:20px 24px;margin:24px 0;">
+              <h3 style="color:#1B3A6B;margin:0 0 12px;font-size:15px;">Your order summary:</h3>
+              <p style="margin:4px 0;font-size:14px;color:#1A1A1A;"><strong>${waterType}</strong> — ${bottleSize}</p>
+              <p style="margin:4px 0;font-size:14px;color:#1A1A1A;">${bottlesPerDelivery} for your first delivery</p>
+              <p style="margin:4px 0;font-size:14px;color:#1A1A1A;">Deliveries scheduled every 2 weeks to start</p>
+              <p style="margin:4px 0;font-size:14px;color:#1A1A1A;">${address}, ${city}, CA ${zip}</p>
             </div>
 
             <p style="color:#5a7080;font-size:14px;line-height:1.7;">
-              Questions? Call us anytime at <a href="tel:+18445227000" style="color:#1e90d6;font-weight:600;">(844) 522-7000</a>
+              Questions? Call us anytime at <a href="tel:+12133714500" style="color:#29ABE2;font-weight:600;">(213) 371-4500</a>
               or reply to this email.
             </p>
 
-            <p style="color:#1a2a3a;font-size:14px;margin-top:24px;">
-              Welcome to the Pure O Water family!<br />
-              <strong>— The Pure O Water Team</strong>
+            <p style="color:#1A1A1A;font-size:14px;margin-top:24px;">
+              Welcome to the DTLA Water family!<br />
+              <strong>— The DTLA Water Team</strong>
             </p>
           </div>
 
-          <div style="background:#f4f7fa;padding:16px 32px;text-align:center;">
+          <div style="background:#F5F8FB;padding:16px 32px;text-align:center;">
             <p style="color:#5a7080;font-size:12px;margin:0;">
-              Pure O Water · (844) 522-7000 · Southern California<br />
+              DTLA Water · (213) 371-4500 · Downtown Los Angeles<br />
               <em>Small Enough To Care. Big Enough To Deliver.</em>
             </p>
           </div>

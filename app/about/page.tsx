@@ -6,23 +6,25 @@ import { Heart, Gem, Clock, Users } from 'lucide-react'
 import OrderForm from '@/components/OrderForm'
 
 export const metadata: Metadata = {
-  title: 'About Us | Pure O Water',
-  description: 'Pure O Water has been delivering premium purified and alkaline water across Ventura County and surrounding areas since 2005. A locally owned business built on quality and reliability.',
+  title: 'About Us | DTLA Water',
+  description: 'DTLA Water has been delivering premium purified and alkaline water to offices, industrial facilities, and productions across Downtown Los Angeles for over 20 years. A locally owned business built on quality and reliability.',
 }
 
 const values = [
-  { icon: Heart, title: 'Locally Owned', desc: 'We are a local business rooted in the communities we serve. When you choose Pure O Water, you are supporting local.' },
+  { icon: Heart, title: 'Locally Owned', desc: 'We are a local business rooted in Downtown LA. When you choose DTLA Water, you are supporting a local team, not a corporate call center.' },
   { icon: Gem,   title: 'Quality Without Compromise', desc: 'Every bottle goes through our 10-stage filtration process. We never cut corners on water quality, because your health depends on it.' },
   { icon: Clock, title: 'Reliable & Consistent', desc: 'We show up when we say we will. Our delivery team has served many customers for years because consistency matters more than anything.' },
-  { icon: Users, title: 'Community First', desc: 'We live and work in the same communities we deliver to. Supporting Pure O Water means supporting local.' },
+  { icon: Users, title: 'Community First', desc: 'We live and work in the same community we deliver to. Supporting DTLA Water means supporting a Downtown LA business.' },
 ]
 
+// ⚠️ PLACEHOLDER — generic era labels used instead of specific years since we
+// don't have DTLA Water's real founding history. Replace with real milestones.
 const timeline = [
-  { year: '2005', title: 'Founded in Ventura County', desc: 'Pure O Water started with a single delivery route and a commitment to bringing better water to local families.' },
-  { year: '2008', title: 'Expanded to Offices & Business', desc: 'Demand from local businesses led us to expand our commercial delivery service, serving offices, restaurants, and gyms.' },
-  { year: '2012', title: 'Alkaline Water Added', desc: 'We added our pH 9.5 alkaline water line in response to growing customer interest in the health benefits of alkaline hydration.' },
-  { year: '2018', title: 'Santa Clarita & Antelope Valley', desc: 'Expanded delivery routes to serve Santa Clarita, Palmdale, Lancaster, and surrounding communities.' },
-  { year: '2025', title: 'Serving 6,000+ Customers', desc: 'Today we proudly serve thousands of homes, offices, and businesses across Southern California.' },
+  { era: 'Early Days', title: 'Founded in Downtown LA', desc: 'DTLA Water started with a single delivery route and a commitment to bringing better water to local businesses.' },
+  { era: 'Growth', title: 'Expanded to Offices & Industrial', desc: 'Demand from downtown offices and industrial facilities led us to expand our commercial delivery service.' },
+  { era: 'Innovation', title: 'Alkaline Water Added', desc: 'We added our pH 9.5 alkaline water line in response to growing customer interest in the health benefits of alkaline hydration.' },
+  { era: 'Expansion', title: 'Serving Greater Los Angeles', desc: 'Expanded delivery routes to serve Koreatown, Hollywood, Glendale, Pasadena, and surrounding communities.' },
+  { era: 'Today', title: 'Serving 6,000+ Customers', desc: 'Today we proudly serve thousands of offices, industrial facilities, and productions across Downtown and Greater Los Angeles.' },
 ]
 
 export default function AboutPage() {
@@ -34,7 +36,7 @@ export default function AboutPage() {
           badge="Our Story"
           title="Small Enough to Care."
           titleAccent="Big Enough to Deliver."
-          subtitle="Pure O Water has been a trusted name in Southern California water delivery since 2005. A locally owned business built on quality, reliability, and personal service."
+          subtitle="DTLA Water has been a trusted name in Downtown LA water delivery for over 20 years. A locally owned business built on quality, reliability, and personal service."
           breadcrumbs={[{ label: 'About Us', href: '#' }]}
         />
 
@@ -44,10 +46,10 @@ export default function AboutPage() {
             <div>
               <p className="text-xs font-bold tracking-[0.12em] uppercase text-[#29ABE2] mb-4">Our Mission</p>
               <h2 className="text-4xl font-bold text-[#1B3A6B] leading-tight mb-6" style={{ fontFamily: 'var(--font-heading)' }}>
-                Better Water for Every Home and Business in Southern California
+                Better Water for Every Office and Business in Downtown LA
               </h2>
               <p className="text-[#5a7080] text-lg leading-relaxed mb-5">
-                We started Pure O Water because we believed our community deserved access to truly clean, high-quality water — without having to pay big-brand prices or sacrifice on service.
+                We started DTLA Water because we believed Downtown LA&apos;s offices, productions, and businesses deserved access to truly clean, high-quality water — without having to pay big-brand prices or sacrifice on service.
               </p>
               <p className="text-[#5a7080] text-lg leading-relaxed mb-8">
                 Twenty years later, that belief hasn&apos;t changed. We still personally oversee every batch of water, know many of our customers by name, and treat every delivery like it matters — because it does.
@@ -104,10 +106,10 @@ export default function AboutPage() {
               <div className="absolute left-16 top-0 bottom-0 w-px bg-[#d0e4ef]" />
               <div className="space-y-8">
                 {timeline.map((item, i) => (
-                  <div key={item.year} className="flex gap-8 items-start">
+                  <div key={item.era} className="flex gap-8 items-start">
                     <div className="flex-shrink-0 w-32 text-right">
                       <span className="inline-block bg-[#1B3A6B] text-[#29ABE2] text-sm font-bold px-3 py-1.5 rounded-lg">
-                        {item.year}
+                        {item.era}
                       </span>
                     </div>
                     <div className="relative flex-1 pb-8">

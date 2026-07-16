@@ -1,6 +1,6 @@
-# Pure O Water — Website
+# DTLA Water — Website
 
-Premium water delivery website for Pure O Water, serving Ventura County, Santa Clarita, and the Antelope Valley.
+Premium water delivery website for DTLA Water, serving Downtown Los Angeles and Greater LA.
 
 ## Tech Stack
 
@@ -41,7 +41,7 @@ RESEND_API_KEY="re_your_key_here"
 OWNER_EMAIL="owner@dtlawater.com"
 
 # Public URL (no trailing slash)
-NEXT_PUBLIC_SITE_URL="https://pureowater.com"
+NEXT_PUBLIC_SITE_URL="https://dtlawater.com"
 
 # Admin login credentials — CHANGE BEFORE DEPLOYING
 ADMIN_USERNAME="joseph"
@@ -154,12 +154,12 @@ Features:
 ## Email Setup (Resend)
 
 1. Create a free account at [resend.com](https://resend.com)
-2. Add and verify your domain (`pureowater.com`)
+2. Add and verify your domain (`dtlawater.com`)
 3. Create an API key and add it to `.env.local`
 
 Two email flows are active:
-- **Order submitted** → notification to Joseph + confirmation to customer
-- **Contact form** → notification to Joseph + auto-reply to sender
+- **Order submitted** → notification to owner + confirmation to customer
+- **Contact form** → notification to owner + auto-reply to sender
 
 ---
 
@@ -186,7 +186,7 @@ For the database in production, switch from SQLite to [Vercel Postgres](https://
 - [ ] Add Google Search Console verification token in `layout.tsx`
 - [ ] Upload a real `og-image.png` (1200×630px) to `/public`
 - [ ] Add Google Analytics 4 tag to `layout.tsx`
-- [ ] Submit sitemap to Google Search Console: `https://pureowater.com/sitemap.xml`
+- [ ] Submit sitemap to Google Search Console: `https://dtlawater.com/sitemap.xml`
 - [ ] Verify Google Business Profile is linked and optimized
 - [ ] Test order form end-to-end (submit a test order, confirm emails arrive)
 - [ ] Test admin login and dashboard

@@ -36,24 +36,10 @@ export default function ContactPage() {
   const contactDetails = [
     {
       icon: Phone,
-      label: 'Ventura County',
-      value: '(805) 991-7400',
-      href: 'tel:+18059917400',
-      sub: '4744 Telephone Rd, Suite 3257\nVentura, CA 93003',
-    },
-    {
-      icon: Phone,
-      label: 'Antelope Valley & Santa Clarita',
-      value: '(661) 522-7002',
-      href: 'tel:+16615227002',
-      sub: '19425 Soledad Canyon Rd, Suite 205\nCanyon Country, CA 91351',
-    },
-    {
-      icon: Phone,
-      label: 'Toll-Free',
-      value: '(844) 522-7000',
-      href: 'tel:+18445227000',
-      sub: null,
+      label: 'Call Us',
+      value: '(213) 371-4500',
+      href: 'tel:+12133714500',
+      sub: '1360 South Figueroa Street\nLos Angeles, CA 90015',
     },
   ]
 
@@ -182,7 +168,7 @@ export default function ContactPage() {
                       </div>
                       <div>
                         <label className="block text-xs font-semibold text-[#1B3A6B] mb-1.5">Phone Number</label>
-                        <input type="tel" placeholder="(805) 555-0100" value={form.phone} onChange={set('phone')} className={inputClass} />
+                        <input type="tel" placeholder="(213) 555-0100" value={form.phone} onChange={set('phone')} className={inputClass} />
                       </div>
                     </div>
 
@@ -222,7 +208,7 @@ export default function ContactPage() {
                     </div>
 
                     {status === 'error' && (
-                      <p className="text-red-500 text-sm">Something went wrong. Please try again or call us at (844) 522-7000.</p>
+                      <p className="text-red-500 text-sm">Something went wrong. Please try again or call us at (213) 371-4500.</p>
                     )}
 
                     <button
@@ -257,7 +243,7 @@ export default function ContactPage() {
             </h3>
             <div className="rounded-2xl overflow-hidden border-2 border-[#d0e4ef] h-72">
               <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d423286.27405770525!2d-118.69192!3d34.02!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x80e81da9f908d63f%3A0x93b72d71b2ea8c5a!2sVentura%20County%2C%20CA!5e0!3m2!1sen!2sus!4v1620000000000!5m2!1sen!2sus"
+                src="https://www.google.com/maps?q=1360+South+Figueroa+Street,+Los+Angeles,+CA+90015&output=embed"
                 width="100%"
                 height="100%"
                 style={{ border: 0 }}

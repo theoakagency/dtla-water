@@ -6,15 +6,15 @@ import { Check } from 'lucide-react'
 import OrderForm from '@/components/OrderForm'
 
 export const metadata: Metadata = {
-  title: 'Current Offers | Pure O Water',
-  description: 'Pure O Water current promotions — referral discounts, office bundle pricing, and more.',
+  title: 'Current Offers | DTLA Water',
+  description: 'DTLA Water current promotions — referral discounts, office bundle pricing, and more.',
 }
 
 const offers = [
   {
     badge: 'Homes & Small Businesses',
     title: 'Hot & Cold Dispenser + 2 Bottles — $30 Delivered',
-    desc: 'Try Pure O Water with zero risk. Get a hot and cold water dispenser plus 2 bottles of your choice delivered to your door for just $30. No contracts, no commitment — just great water.',
+    desc: 'Try DTLA Water with zero risk. Get a hot and cold water dispenser plus 2 bottles of your choice delivered to your door for just $30. No contracts, no commitment — just great water.',
     details: [
       'Includes a hot & cold water dispenser',
       'Choose any 2 bottles — purified or alkaline (pH 9.5)',

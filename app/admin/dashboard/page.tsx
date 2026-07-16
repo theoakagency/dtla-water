@@ -346,7 +346,7 @@ export default function AdminDashboard() {
               </div>
               <div>
                 <p className="text-white font-semibold text-sm">Delete Order #{confirmDelete}</p>
-                <p className="text-white/50 text-xs">Pure O Water Admin</p>
+                <p className="text-white/50 text-xs">DTLA Water Admin</p>
               </div>
             </div>
             <div className="px-6 py-5">
