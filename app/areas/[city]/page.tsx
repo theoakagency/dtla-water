@@ -78,7 +78,7 @@ export default async function CityPage(
       <Navbar />
       <main>
         {/* Hero */}
-        <section className="min-h-[60vh] bg-gradient-to-br from-[#12233F] via-[#1B3A6B] to-[#2A5A96] flex items-center pt-16 px-6 relative overflow-hidden">
+        <section className="min-h-[60vh] bg-gradient-to-br from-[#12233F] via-[#1B3A6B] to-[#2A5A96] flex items-center pt-20 md:pt-24 px-6 relative overflow-hidden">
           <div className="absolute inset-0 pointer-events-none">
             <div className="absolute w-[500px] h-[500px] rounded-full top-1/2 right-1/4 -translate-y-1/2"
               style={{ background: 'radial-gradient(circle, rgba(0,201,228,0.08) 0%, transparent 65%)' }} />

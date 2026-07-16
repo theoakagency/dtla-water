@@ -23,7 +23,7 @@ export default function PageHero({
 }: PageHeroProps) {
   return (
     <section
-      className={`bg-gradient-to-br from-[#12233F] via-[#1B3A6B] to-[#2A5A96] flex items-center pt-16 px-6 relative overflow-hidden ${
+      className={`bg-gradient-to-br from-[#12233F] via-[#1B3A6B] to-[#2A5A96] flex items-center pt-20 md:pt-24 px-6 relative overflow-hidden ${
         compact ? 'min-h-[44vh]' : 'min-h-[56vh]'
       }`}
     >

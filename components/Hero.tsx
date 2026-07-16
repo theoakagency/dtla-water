@@ -26,7 +26,7 @@ export default function Hero() {
   }
 
   return (
-    <section className="min-h-screen flex flex-col relative overflow-hidden pt-16">
+    <section className="min-h-screen flex flex-col relative overflow-hidden pt-20 md:pt-24">
       {/* Background */}
       <Image
         src="/dtla-water-hero.png"

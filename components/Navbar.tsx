@@ -9,10 +9,10 @@ export default function Navbar() {
 
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 bg-white backdrop-blur-md border-b border-[#d0e4ef] shadow-sm">
-      <div className="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
+      <div className="max-w-6xl mx-auto px-6 h-20 md:h-24 flex items-center justify-between">
         {/* Logo */}
         <Link href="/">
-          <Image src="/dtla-water-logo.png" alt="DTLA Water" width={122} height={56} className="h-12 w-auto" priority />
+          <Image src="/dtla-water-logo.png" alt="DTLA Water" width={174} height={80} className="h-16 md:h-20 w-auto" priority />
         </Link>
 
         {/* Desktop links */}
