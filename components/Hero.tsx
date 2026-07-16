@@ -1,6 +1,7 @@
 'use client'
 
 import { useState } from 'react'
+import Image from 'next/image'
 import { CheckCircle2 } from 'lucide-react'
 
 // PLACEHOLDER — DTLA-area zip codes covering Downtown LA + immediate Greater LA
@@ -26,12 +27,18 @@ export default function Hero() {
 
   return (
     <section className="min-h-screen flex flex-col relative overflow-hidden pt-16">
-      {/* Background — TODO: replace with a downtown LA skyline photo (see spec §Imagery).
-          Using a navy gradient placeholder in the meantime. */}
-      <div className="absolute inset-0 bg-gradient-to-br from-[#12233F] via-[#1B3A6B] to-[#2A5A96]" />
+      {/* Background */}
+      <Image
+        src="/dtla-water-hero.png"
+        alt="Downtown Los Angeles skyline with DTLA Water delivery bottles"
+        fill
+        className="object-cover object-center"
+        priority
+      />
 
-      {/* Dark overlay */}
-      <div className="absolute inset-0 bg-black/35" />
+      {/* Dark overlay — heavier on the left where text sits, lighter over the bottles on the right */}
+      <div className="absolute inset-0 bg-gradient-to-r from-black/75 via-black/45 to-black/20" />
+      <div className="absolute inset-0 bg-black/20" />
 
       {/* Main content */}
       <div className="relative z-10 flex-1 flex items-center">
