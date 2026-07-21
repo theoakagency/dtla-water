@@ -3,18 +3,12 @@
 import { useState } from 'react'
 import Image from 'next/image'
 import { CheckCircle2 } from 'lucide-react'
+import { cities } from '@/lib/cities'
 
-// PLACEHOLDER — DTLA-area zip codes covering Downtown LA + immediate Greater LA
-// neighborhoods (Arts District, Historic Core, South Park, Financial District,
-// Koreatown, Echo Park, Boyle Heights, etc). Confirm/replace with the real
-// delivery zone before launch.
-const SERVICE_ZIPS = [
-  // Downtown LA core
-  '90012', '90013', '90014', '90015', '90017', '90021', '90071',
-  // Greater LA / surrounding neighborhoods
-  '90007', '90020', '90023', '90026', '90027', '90028', '90029',
-  '90031', '90033', '90057', '90058', '90063', '90065',
-]
+// Derived from lib/cities.ts (the single source of truth for service areas)
+// instead of a separately hand-maintained list, so this can't drift out of
+// sync with the actual /areas/[city] pages again.
+const SERVICE_ZIPS = cities.flatMap((c) => c.zips)
 
 export default function Hero() {
   const [zip, setZip] = useState('')
