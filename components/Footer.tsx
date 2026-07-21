@@ -41,6 +41,10 @@ const footerLinks = {
     { label: 'Burbank',               href: '/areas/burbank' },
     { label: 'Glendale',              href: '/areas/glendale' },
     { label: 'Pasadena',              href: '/areas/pasadena' },
+    { label: 'Montrose',              href: '/areas/montrose' },
+    { label: 'Arcadia',               href: '/areas/arcadia' },
+    { label: 'Azusa',                 href: '/areas/azusa' },
+    { label: 'El Monte',              href: '/areas/el-monte' },
   ],
   Company: [
     { label: 'About Us',       href: '/about' },

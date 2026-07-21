@@ -57,8 +57,9 @@ export default function Hero() {
 
           <p className="text-lg text-white/75 leading-relaxed mb-10 max-w-lg">
             Reliable bottled water delivery for offices, industrial facilities, events,
-            and film productions across Downtown Los Angeles. Small enough to care,
-            big enough to deliver.
+            and film productions across Downtown Los Angeles — plus flagship Vernon
+            Industrial Water bulk water stops for warehouses and manufacturers. Small
+            enough to care, big enough to deliver.
           </p>
 
           <div className="flex flex-wrap gap-4">

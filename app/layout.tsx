@@ -108,10 +108,15 @@ const localBusinessSchema = {
     { '@type': 'City', name: 'Downtown LA' },
     { '@type': 'City', name: 'Koreatown' },
     { '@type': 'City', name: 'Hollywood' },
+    { '@type': 'City', name: 'Vernon' },
     { '@type': 'City', name: 'Culver City' },
     { '@type': 'City', name: 'Burbank' },
     { '@type': 'City', name: 'Glendale' },
     { '@type': 'City', name: 'Pasadena' },
+    { '@type': 'City', name: 'Montrose' },
+    { '@type': 'City', name: 'Arcadia' },
+    { '@type': 'City', name: 'Azusa' },
+    { '@type': 'City', name: 'El Monte' },
   ],
   openingHoursSpecification: [
     {

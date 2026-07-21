@@ -86,6 +86,27 @@ export default function Products() {
             )
           })}
         </div>
+
+        {/* Vernon Industrial Water — flagship bulk/industrial callout, separate from the two retail products above */}
+        <div className="mt-7 rounded-2xl bg-gradient-to-br from-[#12233F] to-[#1B3A6B] p-10 lg:p-12 flex flex-col lg:flex-row items-start lg:items-center justify-between gap-8">
+          <div>
+            <span className="inline-block bg-[#29ABE2]/15 text-[#29ABE2] text-xs font-bold tracking-widest uppercase px-3 py-1.5 rounded-full mb-4">
+              Flagship Industrial Service
+            </span>
+            <h3 className="text-2xl lg:text-3xl font-bold text-white mb-3" style={{ fontFamily: 'var(--font-heading)' }}>
+              Vernon Industrial Water
+            </h3>
+            <p className="text-white/70 max-w-xl leading-relaxed">
+              Scheduled bulk water stops for warehouses, manufacturers, and distribution centers in Vernon and the surrounding industrial district — high-volume delivery sized to your operation, not a standard bottle order.
+            </p>
+          </div>
+          <a
+            href="/areas/vernon"
+            className="flex-shrink-0 bg-[#111111] text-white px-7 py-4 rounded-lg font-bold hover:bg-[#2a2a2a] transition-all hover:-translate-y-0.5 whitespace-nowrap"
+          >
+            Vernon Industrial Water →
+          </a>
+        </div>
       </div>
     </section>
   )

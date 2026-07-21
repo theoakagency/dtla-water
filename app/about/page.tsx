@@ -58,7 +58,7 @@ export default function AboutPage() {
                 {[
                   { num: '20+', label: 'Years in business' },
                   { num: '6,000+', label: 'Active customers' },
-                  { num: '11', label: 'Communities served' },
+                  { num: '15', label: 'Communities served' },
                 ].map((s) => (
                   <div key={s.label}>
                     <div className="text-3xl font-bold text-[#1B3A6B]" style={{ fontFamily: 'var(--font-heading)' }}>{s.num}</div>

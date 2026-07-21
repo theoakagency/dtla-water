@@ -9,11 +9,15 @@ const areas = [
   { icon: Home,       name: 'Boyle Heights',            desc: 'Homes, offices, and industrial businesses in Boyle Heights.',                  href: '/areas/boyle-heights' },
   { icon: Building2,  name: 'Mid-Wilshire',             desc: 'Mid-Wilshire and Hancock Park offices, homes, and businesses.',                href: '/areas/mid-wilshire' },
   { icon: Film,       name: 'Hollywood',                desc: 'Offices, productions, and businesses throughout Hollywood.',                   href: '/areas/hollywood' },
-  { icon: Factory,    name: 'Vernon & Industrial',      desc: 'Warehouses, manufacturing, and distribution facilities.',                      href: '/areas/vernon' },
+  { icon: Factory,    name: 'Vernon & Industrial',      desc: 'Vernon Industrial Water — bulk water stops for warehouses, manufacturing, and distribution facilities.', href: '/areas/vernon' },
   { icon: Film,       name: 'Culver City',              desc: 'Studios, offices, and productions in Culver City.',                            href: '/areas/culver-city' },
   { icon: Film,       name: 'Burbank',                  desc: 'Studios, offices, and businesses in the Burbank media district.',               href: '/areas/burbank' },
   { icon: Mountain,   name: 'Glendale',                 desc: 'Homes, offices, and businesses throughout Glendale.',                          href: '/areas/glendale' },
   { icon: Mountain,   name: 'Pasadena',                 desc: 'Homes, offices, and businesses throughout Pasadena.',                          href: '/areas/pasadena' },
+  { icon: Leaf,       name: 'Montrose',                 desc: 'Montrose and La Crescenta foothill homes and businesses.',                     href: '/areas/montrose' },
+  { icon: Building2,  name: 'Arcadia',                  desc: 'Homes, offices, and businesses throughout Arcadia.',                           href: '/areas/arcadia' },
+  { icon: Mountain,   name: 'Azusa',                    desc: 'Homes, offices, schools, and businesses in Azusa.',                            href: '/areas/azusa' },
+  { icon: Factory,    name: 'El Monte',                 desc: 'Homes, offices, and warehouse/distribution delivery along the I-10 corridor.', href: '/areas/el-monte' },
   { icon: MapPin,     name: "Don't see your city?",     desc: 'Enter your zip above — we may still deliver to you.',                          href: '/#order' },
 ]
 
