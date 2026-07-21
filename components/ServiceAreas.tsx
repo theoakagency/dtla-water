@@ -1,27 +1,52 @@
-import { MapPin, Home, Mountain, Building2, Factory, Film, Leaf } from 'lucide-react'
+import { MapPin, Home, Mountain, Building2, Factory, Film, Leaf, LucideIcon } from 'lucide-react'
+import { cities } from '@/lib/cities'
 
-// ⚠️ PLACEHOLDER — mirrors the draft areas in lib/cities.ts. Confirm the real
-// DTLA Water service area before launch.
-const areas = [
-  { icon: Building2, name: 'Downtown LA',              desc: 'Historic Core, Arts District, South Park, and Financial District delivery.', href: '/areas/downtown-la' },
-  { icon: Home,       name: 'Koreatown',                desc: 'Offices, restaurants, and businesses throughout Koreatown.',                  href: '/areas/koreatown' },
-  { icon: Leaf,       name: 'Echo Park & Silver Lake',  desc: 'Homes, offices, and creative studios in Echo Park and Silver Lake.',           href: '/areas/echo-park' },
-  { icon: Home,       name: 'Boyle Heights',            desc: 'Homes, offices, and industrial businesses in Boyle Heights.',                  href: '/areas/boyle-heights' },
-  { icon: Building2,  name: 'Mid-Wilshire',             desc: 'Mid-Wilshire and Hancock Park offices, homes, and businesses.',                href: '/areas/mid-wilshire' },
-  { icon: Film,       name: 'Hollywood',                desc: 'Offices, productions, and businesses throughout Hollywood.',                   href: '/areas/hollywood' },
-  { icon: Factory,    name: 'Vernon & Industrial',      desc: 'Vernon Industrial Water — bulk water stops for warehouses, manufacturing, and distribution facilities.', href: '/areas/vernon' },
-  { icon: Film,       name: 'Culver City',              desc: 'Studios, offices, and productions in Culver City.',                            href: '/areas/culver-city' },
-  { icon: Film,       name: 'Burbank',                  desc: 'Studios, offices, and businesses in the Burbank media district.',               href: '/areas/burbank' },
-  { icon: Mountain,   name: 'Glendale',                 desc: 'Homes, offices, and businesses throughout Glendale.',                          href: '/areas/glendale' },
-  { icon: Mountain,   name: 'Pasadena',                 desc: 'Homes, offices, and businesses throughout Pasadena.',                          href: '/areas/pasadena' },
-  { icon: Leaf,       name: 'Montrose',                 desc: 'Montrose and La Crescenta foothill homes and businesses.',                     href: '/areas/montrose' },
-  { icon: Building2,  name: 'Arcadia',                  desc: 'Homes, offices, and businesses throughout Arcadia.',                           href: '/areas/arcadia' },
-  { icon: Mountain,   name: 'Azusa',                    desc: 'Homes, offices, schools, and businesses in Azusa.',                            href: '/areas/azusa' },
-  { icon: Factory,    name: 'El Monte',                 desc: 'Homes, offices, and warehouse/distribution delivery along the I-10 corridor.', href: '/areas/el-monte' },
-  { icon: MapPin,     name: "Don't see your city?",     desc: 'Enter your zip above — we may still deliver to you.',                          href: '/#order' },
-]
+// Icon per city, keyed by slug — falls back to a generic icon for any city
+// added to lib/cities.ts without a matching entry here, so the grid always
+// includes every service area even if this map goes stale.
+const CITY_ICONS: Record<string, LucideIcon> = {
+  'downtown-la': Building2,
+  'koreatown': Home,
+  'echo-park': Leaf,
+  'highland-park-eagle-rock': Leaf,
+  'glassell-park': Leaf,
+  'boyle-heights': Home,
+  'el-sereno': Home,
+  'east-la': Home,
+  'mid-wilshire': Building2,
+  'hollywood': Film,
+  'vernon': Factory,
+  'commerce': Factory,
+  'huntington-park': Factory,
+  'bell': Factory,
+  'maywood': Factory,
+  'south-gate': Factory,
+  'culver-city': Film,
+  'palms-beverlywood': Home,
+  'burbank': Film,
+  'glendale': Mountain,
+  'pasadena': Mountain,
+  'south-pasadena': Mountain,
+  'san-marino': Building2,
+  'alhambra': Building2,
+  'monterey-park': Home,
+  'san-gabriel': Building2,
+  'rosemead': Factory,
+  'temple-city': Home,
+  'montrose': Leaf,
+  'arcadia': Building2,
+  'azusa': Mountain,
+  'el-monte': Factory,
+}
 
 export default function ServiceAreas() {
+  const areas = cities.map((city) => ({
+    icon: CITY_ICONS[city.slug] ?? Home,
+    name: city.name,
+    desc: city.heroDesc,
+    href: `/areas/${city.slug}`,
+  }))
+
   return (
     <section id="areas" className="py-24 px-6 bg-[#F5F8FB]">
       <div className="max-w-6xl mx-auto">
@@ -36,15 +61,13 @@ export default function ServiceAreas() {
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-          {areas.map((area, i) => {
+          {areas.map((area) => {
             const Icon = area.icon
             return (
               <a
-                key={area.name}
+                key={area.href}
                 href={area.href}
-                className={`group flex flex-col bg-white border-2 rounded-2xl p-6 transition-all duration-200 hover:-translate-y-1 hover:border-[#29ABE2] hover:shadow-[0_8px_28px_rgba(27,58,107,0.12)] no-underline ${
-                  i === areas.length - 1 ? 'border-dashed border-[#d0e4ef] bg-[#F5F8FB]' : 'border-[#d0e4ef]'
-                }`}
+                className="group flex flex-col bg-white border-2 border-[#d0e4ef] rounded-2xl p-6 transition-all duration-200 hover:-translate-y-1 hover:border-[#29ABE2] hover:shadow-[0_8px_28px_rgba(27,58,107,0.12)] no-underline"
               >
                 <div className="w-10 h-10 rounded-xl bg-[#F5F8FB] flex items-center justify-center mb-4">
                   <Icon size={20} className="text-[#29ABE2]" />
@@ -52,11 +75,26 @@ export default function ServiceAreas() {
                 <h3 className="font-bold text-[#1B3A6B] text-lg mb-2" style={{ fontFamily: 'var(--font-heading)' }}>{area.name}</h3>
                 <p className="text-[#5a7080] text-sm leading-relaxed flex-1 mb-4">{area.desc}</p>
                 <span className="text-[#29ABE2] text-sm font-semibold group-hover:gap-2 flex items-center gap-1 transition-all">
-                  {i === areas.length - 1 ? 'Check my zip →' : 'View delivery info →'}
+                  View delivery info →
                 </span>
               </a>
             )
           })}
+
+          {/* Catch-all card */}
+          <a
+            href="/#order"
+            className="group flex flex-col bg-[#F5F8FB] border-2 border-dashed border-[#d0e4ef] rounded-2xl p-6 transition-all duration-200 hover:-translate-y-1 hover:border-[#29ABE2] hover:shadow-[0_8px_28px_rgba(27,58,107,0.12)] no-underline"
+          >
+            <div className="w-10 h-10 rounded-xl bg-white flex items-center justify-center mb-4">
+              <MapPin size={20} className="text-[#29ABE2]" />
+            </div>
+            <h3 className="font-bold text-[#1B3A6B] text-lg mb-2" style={{ fontFamily: 'var(--font-heading)' }}>Don&apos;t see your city?</h3>
+            <p className="text-[#5a7080] text-sm leading-relaxed flex-1 mb-4">Enter your zip above — we may still deliver to you.</p>
+            <span className="text-[#29ABE2] text-sm font-semibold group-hover:gap-2 flex items-center gap-1 transition-all">
+              Check my zip →
+            </span>
+          </a>
         </div>
       </div>
     </section>
