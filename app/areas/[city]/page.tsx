@@ -1,6 +1,6 @@
 import { Metadata } from 'next'
 import { notFound } from 'next/navigation'
-import { cities, getCityBySlug } from '@/lib/cities'
+import { cities, regions, getCityBySlug, getRegionBySlug } from '@/lib/cities'
 import Navbar from '@/components/Navbar'
 import Footer from '@/components/Footer'
 import Link from 'next/link'
@@ -8,40 +8,48 @@ import Script from 'next/script'
 import { Truck, ShieldCheck, CalendarX2, Check, Droplets, FlaskConical } from 'lucide-react'
 import OrderForm from '@/components/OrderForm'
 
-// Generate static params for all cities
+// Generate static params for all cities AND regions — both are served from
+// this single /areas/[slug] route.
 export async function generateStaticParams() {
-  return cities.map((city) => ({ city: city.slug }))
+  return [
+    ...cities.map((city) => ({ city: city.slug })),
+    ...regions.map((region) => ({ city: region.slug })),
+  ]
 }
 
-// Dynamic SEO metadata per city
+// Dynamic SEO metadata per city or region
 export async function generateMetadata(
   { params }: { params: Promise<{ city: string }> }
 ): Promise<Metadata> {
-  const { city: citySlug } = await params
-  const city = getCityBySlug(citySlug)
-  if (!city) return {}
+  const { city: slug } = await params
+  const area = getCityBySlug(slug) ?? getRegionBySlug(slug)
+  if (!area) return {}
 
   return {
-    title: `Water Delivery in ${city.name}, CA | DTLA Water`,
-    description: `Premium purified and alkaline water delivery in ${city.name}, ${city.county}. ${city.heroDesc} Start your delivery today.`,
-    keywords: `water delivery ${city.name}, alkaline water ${city.name}, purified water delivery ${city.county}, ${city.name} water service`,
+    title: `Water Delivery in ${area.name}, CA | DTLA Water`,
+    description: `Premium purified and alkaline water delivery in ${area.name}, ${area.county}. ${area.heroDesc} Start your delivery today.`,
+    keywords: `water delivery ${area.name}, alkaline water ${area.name}, purified water delivery ${area.county}, ${area.name} water service`,
   }
 }
 
 export default async function CityPage(
   { params }: { params: Promise<{ city: string }> }
 ) {
-  const { city: citySlug } = await params
-  const city = getCityBySlug(citySlug)
-  if (!city) notFound()
+  const { city: slug } = await params
+  const city = getCityBySlug(slug)
+  const region = city ? undefined : getRegionBySlug(slug)
+  const area = city ?? region
+  if (!area) notFound()
+
+  const isRegion = Boolean(region)
 
   const BASE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://dtlawater.com'
 
-  const citySchema = {
+  const areaSchema = {
     '@context': 'https://schema.org',
     '@type': 'Service',
-    name: `Water Delivery in ${city.name}, CA`,
-    description: city.heroDesc,
+    name: `Water Delivery in ${area.name}, CA`,
+    description: area.heroDesc,
     provider: {
       '@type': 'LocalBusiness',
       name: 'DTLA Water',
@@ -49,16 +57,16 @@ export default async function CityPage(
       url: BASE_URL,
     },
     areaServed: {
-      '@type': 'City',
-      name: city.name,
+      '@type': isRegion ? 'AdministrativeArea' : 'City',
+      name: area.name,
       addressRegion: 'CA',
       addressCountry: 'US',
     },
-    url: `${BASE_URL}/areas/${city.slug}`,
+    url: `${BASE_URL}/areas/${area.slug}`,
   }
 
   const trustItems = [
-    { icon: Truck,      label: `Serving ${city.name} for 20+ Years` },
+    { icon: Truck,      label: `Serving ${area.name} for 20+ Years` },
     { icon: ShieldCheck, label: 'Locally Owned Business' },
     { icon: CalendarX2, label: 'No Long-Term Contract' },
   ]
@@ -71,9 +79,9 @@ export default async function CityPage(
   return (
     <>
       <Script
-        id={`city-schema-${city.slug}`}
+        id={`area-schema-${area.slug}`}
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(citySchema) }}
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(areaSchema) }}
       />
       <Navbar />
       <main>
@@ -90,25 +98,25 @@ export default async function CityPage(
               <span>/</span>
               <Link href="/#areas" className="hover:text-white/70 transition-colors">Service Areas</Link>
               <span>/</span>
-              <span className="text-white/60">{city.name}</span>
+              <span className="text-white/60">{area.name}</span>
             </div>
 
             <div className="inline-flex items-center gap-2 bg-[#29ABE2]/10 border border-[#29ABE2]/30 text-[#29ABE2] text-xs font-bold tracking-widest uppercase px-4 py-2 rounded-full mb-6">
               <span className="w-1.5 h-1.5 rounded-full bg-[#29ABE2] animate-pulse" />
-              {city.county}
+              {area.county}
             </div>
 
             <h1 className="text-5xl lg:text-6xl font-bold text-white leading-tight mb-6" style={{ fontFamily: 'var(--font-heading)' }}>
-              Water Delivery<br />in <span className="text-[#29ABE2]">{city.name}, CA</span>
+              Water Delivery<br />in <span className="text-[#29ABE2]">{area.name}, CA</span>
             </h1>
 
             <p className="text-lg text-white/65 max-w-xl leading-relaxed mb-10">
-              {city.heroDesc}
+              {area.heroDesc}
             </p>
 
             <div className="flex flex-wrap gap-4">
               <a href="#order-form" className="bg-[#111111] text-white px-8 py-4 rounded-lg font-bold hover:bg-[#2a2a2a] transition-all hover:-translate-y-0.5 hover:shadow-[0_8px_32px_rgba(0,201,228,0.35)]">
-                Start My Delivery in {city.name} →
+                Start My Delivery in {area.name} →
               </a>
               <a href="/contact" className="inline-flex items-center gap-2 border border-white/20 text-white/80 px-7 py-4 rounded-lg font-medium hover:bg-white/05 hover:border-white/40 transition-all">
                 Contact Us →
@@ -139,35 +147,72 @@ export default async function CityPage(
           <div className="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
             <div>
               <p className="text-xs font-bold tracking-[0.12em] uppercase text-[#29ABE2] mb-4">Coverage Area</p>
-              <h2 className="text-4xl font-bold text-[#1B3A6B] mb-6 leading-tight" style={{ fontFamily: 'var(--font-heading)' }}>
-                Neighborhoods We Serve in {city.name}
-              </h2>
-              <div className="grid grid-cols-2 gap-2 mb-8">
-                {city.neighborhoods.map((n) => (
-                  <div key={n} className="flex items-center gap-2 text-sm text-[#1A1A1A]">
-                    <div className="w-1.5 h-1.5 rounded-full bg-[#29ABE2] flex-shrink-0" />
-                    {n}
+              {isRegion ? (
+                <>
+                  <h2 className="text-4xl font-bold text-[#1B3A6B] mb-6 leading-tight" style={{ fontFamily: 'var(--font-heading)' }}>
+                    Cities We Serve in {area.name}
+                  </h2>
+                  <div className="flex flex-wrap gap-2 mb-8">
+                    {region!.cities.map((c) =>
+                      c.slug ? (
+                        <Link
+                          key={c.name}
+                          href={`/areas/${c.slug}`}
+                          className="text-sm font-medium text-[#1B3A6B] bg-[#F5F8FB] border border-[#d0e4ef] rounded-full px-3.5 py-1.5 hover:border-[#29ABE2] hover:text-[#29ABE2] transition-all"
+                        >
+                          {c.name}
+                        </Link>
+                      ) : (
+                        <span
+                          key={c.name}
+                          className="text-sm font-medium text-[#1B3A6B] bg-[#F5F8FB] border border-[#d0e4ef] rounded-full px-3.5 py-1.5"
+                        >
+                          {c.name}
+                        </span>
+                      )
+                    )}
                   </div>
-                ))}
-              </div>
-              <p className="text-[#5a7080] text-sm leading-relaxed">
-                Don&apos;t see your neighborhood? We likely still deliver to you.{' '}
-                <a href="#order-form" className="text-[#29ABE2] font-semibold hover:underline">
-                  Fill out our form
-                </a>{' '}
-                and we&apos;ll confirm delivery availability within 1 business day.
-              </p>
+                  <p className="text-[#5a7080] text-sm leading-relaxed">
+                    Don&apos;t see your city? We likely still deliver to you.{' '}
+                    <a href="#order-form" className="text-[#29ABE2] font-semibold hover:underline">
+                      Fill out our form
+                    </a>{' '}
+                    and we&apos;ll confirm delivery availability within 1 business day.
+                  </p>
+                </>
+              ) : (
+                <>
+                  <h2 className="text-4xl font-bold text-[#1B3A6B] mb-6 leading-tight" style={{ fontFamily: 'var(--font-heading)' }}>
+                    Neighborhoods We Serve in {area.name}
+                  </h2>
+                  <div className="grid grid-cols-2 gap-2 mb-8">
+                    {city!.neighborhoods.map((n) => (
+                      <div key={n} className="flex items-center gap-2 text-sm text-[#1A1A1A]">
+                        <div className="w-1.5 h-1.5 rounded-full bg-[#29ABE2] flex-shrink-0" />
+                        {n}
+                      </div>
+                    ))}
+                  </div>
+                  <p className="text-[#5a7080] text-sm leading-relaxed">
+                    Don&apos;t see your neighborhood? We likely still deliver to you.{' '}
+                    <a href="#order-form" className="text-[#29ABE2] font-semibold hover:underline">
+                      Fill out our form
+                    </a>{' '}
+                    and we&apos;ll confirm delivery availability within 1 business day.
+                  </p>
 
-              <div className="mt-8 pt-6 border-t border-[#d0e4ef]">
-                <p className="text-xs font-bold tracking-[0.12em] uppercase text-[#5a7080] mb-3">Zip Codes We Serve</p>
-                <div className="flex flex-wrap gap-2">
-                  {city.zips.map((zip) => (
-                    <span key={zip} className="bg-[#F5F8FB] border border-[#d0e4ef] text-[#5a7080] text-xs font-mono px-2.5 py-1 rounded-lg">
-                      {zip}
-                    </span>
-                  ))}
-                </div>
-              </div>
+                  <div className="mt-8 pt-6 border-t border-[#d0e4ef]">
+                    <p className="text-xs font-bold tracking-[0.12em] uppercase text-[#5a7080] mb-3">Zip Codes We Serve</p>
+                    <div className="flex flex-wrap gap-2">
+                      {city!.zips.map((zip) => (
+                        <span key={zip} className="bg-[#F5F8FB] border border-[#d0e4ef] text-[#5a7080] text-xs font-mono px-2.5 py-1 rounded-lg">
+                          {zip}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+                </>
+              )}
             </div>
 
             <div>
@@ -176,7 +221,7 @@ export default async function CityPage(
                 Water Delivery for Every Customer
               </h2>
               <div className="space-y-3">
-                {city.customerTypes.map((type) => (
+                {area.customerTypes.map((type) => (
                   <div key={type} className="flex items-center gap-3 bg-[#F5F8FB] rounded-xl px-4 py-3.5">
                     <div className="w-6 h-6 rounded-full bg-[#1B3A6B] flex items-center justify-center flex-shrink-0">
                       <Check size={12} className="text-[#29ABE2]" />
@@ -216,7 +261,7 @@ export default async function CityPage(
                       ))}
                     </ul>
                     <a href="#order-form" className="inline-flex items-center gap-2 bg-[#1B3A6B] hover:bg-[#2A5A96] text-white px-5 py-3 rounded-lg font-bold text-sm transition-all">
-                      Order in {city.name} →
+                      Order in {area.name} →
                     </a>
                   </div>
                 )
@@ -230,15 +275,15 @@ export default async function CityPage(
           <div className="max-w-3xl mx-auto text-center">
             <div className="text-[#f0a500] text-2xl tracking-widest mb-6">★★★★★</div>
             <blockquote className="text-2xl text-white font-light leading-relaxed italic mb-8" style={{ fontFamily: 'var(--font-heading)' }}>
-              &ldquo;{city.testimonial.quote}&rdquo;
+              &ldquo;{area.testimonial.quote}&rdquo;
             </blockquote>
             <div className="flex items-center justify-center gap-3">
               <div className="w-12 h-12 rounded-full bg-[#111111] text-white font-bold flex items-center justify-center">
-                {city.testimonial.initials}
+                {area.testimonial.initials}
               </div>
               <div className="text-left">
-                <div className="text-white font-semibold">{city.testimonial.name}</div>
-                <div className="text-white/50 text-sm">{city.testimonial.role}</div>
+                <div className="text-white font-semibold">{area.testimonial.name}</div>
+                <div className="text-white/50 text-sm">{area.testimonial.role}</div>
               </div>
             </div>
           </div>
@@ -257,7 +302,7 @@ export default async function CityPage(
             </h3>
             <div className="flex flex-wrap justify-center gap-3">
               {cities
-                .filter((c) => c.slug !== city.slug)
+                .filter((c) => c.slug !== area.slug)
                 .map((c) => (
                   <Link
                     key={c.slug}
