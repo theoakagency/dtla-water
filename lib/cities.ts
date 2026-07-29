@@ -422,7 +422,10 @@ export function getCityBySlug(slug: string): CityData | undefined {
 // with cities that don't yet (plain pills). Keeping the individual pages live
 // preserves their SEO; the region page links to them.
 
-export type RegionCity = { name: string; slug?: string }
+// `slug` links a member to its own /areas page (and pulls in that city's zips
+// for the coverage checker). `zips` supplies coverage for pill-only members
+// that don't have their own city entry yet.
+export type RegionCity = { name: string; slug?: string; zips?: string[] }
 
 export type RegionData = {
   slug: string
@@ -532,13 +535,13 @@ export const regions: RegionData[] = [
     phone: REGION_PHONE,
     heroDesc: 'Homes, offices, and businesses throughout West LA.',
     cities: [
-      { name: 'Santa Monica' },
-      { name: 'West Hollywood' },
-      { name: 'Venice' },
-      { name: 'Westwood' },
-      { name: 'Brentwood' },
-      { name: 'Century City' },
-      { name: 'Marina del Rey' },
+      { name: 'Santa Monica', zips: ['90401', '90402', '90403', '90404', '90405'] },
+      { name: 'West Hollywood', zips: ['90046', '90048', '90069'] },
+      { name: 'Venice', zips: ['90291', '90294'] },
+      { name: 'Westwood', zips: ['90024', '90095'] },
+      { name: 'Brentwood', zips: ['90049'] },
+      { name: 'Century City', zips: ['90067'] },
+      { name: 'Marina del Rey', zips: ['90292'] },
       member('culver-city'),
       member('palms-beverlywood', 'Palms & Beverlywood'),
     ],
@@ -553,14 +556,14 @@ export const regions: RegionData[] = [
     phone: REGION_PHONE,
     heroDesc: 'Homes, offices, and businesses throughout the San Fernando Valley.',
     cities: [
-      { name: 'Sherman Oaks' },
-      { name: 'Woodland Hills' },
-      { name: 'North Hollywood' },
-      { name: 'Encino' },
-      { name: 'Van Nuys' },
-      { name: 'Northridge' },
-      { name: 'Studio City' },
-      { name: 'Calabasas' },
+      { name: 'Sherman Oaks', zips: ['91403', '91423'] },
+      { name: 'Woodland Hills', zips: ['91364', '91367'] },
+      { name: 'North Hollywood', zips: ['91601', '91602', '91605', '91606'] },
+      { name: 'Encino', zips: ['91316', '91436'] },
+      { name: 'Van Nuys', zips: ['91401', '91405', '91406', '91411'] },
+      { name: 'Northridge', zips: ['91324', '91325', '91326', '91330'] },
+      { name: 'Studio City', zips: ['91604'] },
+      { name: 'Calabasas', zips: ['91302'] },
     ],
     customerTypes: ['Homes & Families', 'Offices & Businesses', 'Restaurants & Hospitality', 'Event Venues'],
     testimonial: PLACEHOLDER_TESTIMONIAL,
@@ -573,14 +576,14 @@ export const regions: RegionData[] = [
     phone: REGION_PHONE,
     heroDesc: 'Homes, offices, and businesses throughout the South Bay.',
     cities: [
-      { name: 'Torrance' },
-      { name: 'Manhattan Beach' },
-      { name: 'Hermosa Beach' },
-      { name: 'Redondo Beach' },
-      { name: 'San Pedro' },
-      { name: 'Inglewood' },
-      { name: 'El Segundo' },
-      { name: 'Carson' },
+      { name: 'Torrance', zips: ['90501', '90502', '90503', '90504', '90505'] },
+      { name: 'Manhattan Beach', zips: ['90266'] },
+      { name: 'Hermosa Beach', zips: ['90254'] },
+      { name: 'Redondo Beach', zips: ['90277', '90278'] },
+      { name: 'San Pedro', zips: ['90731', '90732'] },
+      { name: 'Inglewood', zips: ['90301', '90302', '90303', '90304', '90305'] },
+      { name: 'El Segundo', zips: ['90245'] },
+      { name: 'Carson', zips: ['90745', '90746', '90810'] },
     ],
     customerTypes: ['Homes & Families', 'Offices & Businesses', 'Restaurants & Hospitality', 'Event Venues'],
     testimonial: PLACEHOLDER_TESTIMONIAL,
@@ -590,4 +593,14 @@ export const regions: RegionData[] = [
 
 export function getRegionBySlug(slug: string): RegionData | undefined {
   return regions.find((r) => r.slug === slug)
+}
+
+// Every zip we deliver to, across individual cities and region member cities.
+// Single source of truth for the hero zip checker so coverage can't drift from
+// what the service-area cards advertise. Deduplicated (regions and cities can
+// share zips).
+export function getServiceZips(): string[] {
+  const cityZips = cities.flatMap((c) => c.zips)
+  const regionZips = regions.flatMap((r) => r.cities.flatMap((c) => c.zips ?? []))
+  return Array.from(new Set([...cityZips, ...regionZips]))
 }
