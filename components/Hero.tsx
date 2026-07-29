@@ -3,12 +3,12 @@
 import { useState } from 'react'
 import Image from 'next/image'
 import { CheckCircle2 } from 'lucide-react'
-import { cities } from '@/lib/cities'
+import { getServiceZips } from '@/lib/cities'
 
-// Derived from lib/cities.ts (the single source of truth for service areas)
-// instead of a separately hand-maintained list, so this can't drift out of
-// sync with the actual /areas/[city] pages again.
-const SERVICE_ZIPS = cities.flatMap((c) => c.zips)
+// Derived from lib/cities.ts (the single source of truth for service areas) —
+// covers both individual cities and region member cities, so this can't drift
+// out of sync with the areas the site actually advertises.
+const SERVICE_ZIPS = getServiceZips()
 
 export default function Hero() {
   const [zip, setZip] = useState('')
