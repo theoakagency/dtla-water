@@ -1,51 +1,37 @@
-import { MapPin, Home, Mountain, Building2, Factory, Film, Leaf, LucideIcon } from 'lucide-react'
-import { cities } from '@/lib/cities'
+import { MapPin, Building2, Factory, Warehouse, Film, Mountain, Palmtree, Sun, Waves, LucideIcon } from 'lucide-react'
+import { regions, getRegionBySlug, getCityBySlug } from '@/lib/cities'
 
-// Icon per city, keyed by slug — falls back to a generic icon for any city
-// added to lib/cities.ts without a matching entry here, so the grid always
-// includes every service area even if this map goes stale.
-const CITY_ICONS: Record<string, LucideIcon> = {
-  'downtown-la': Building2,
-  'koreatown': Home,
-  'echo-park': Leaf,
-  'highland-park-eagle-rock': Leaf,
-  'glassell-park': Leaf,
-  'boyle-heights': Home,
-  'el-sereno': Home,
-  'east-la': Home,
-  'mid-wilshire': Building2,
-  'hollywood': Film,
-  'vernon': Factory,
-  'commerce': Factory,
-  'huntington-park': Factory,
-  'bell': Factory,
-  'maywood': Factory,
-  'south-gate': Factory,
-  'culver-city': Film,
-  'palms-beverlywood': Home,
-  'burbank': Film,
-  'glendale': Mountain,
-  'pasadena': Mountain,
-  'south-pasadena': Mountain,
-  'san-marino': Building2,
-  'alhambra': Building2,
-  'monterey-park': Home,
-  'san-gabriel': Building2,
-  'rosemead': Factory,
-  'temple-city': Home,
-  'montrose': Leaf,
-  'arcadia': Building2,
-  'azusa': Mountain,
-  'el-monte': Factory,
+// Icon per region, keyed by slug. Distinct from the individual-city icons used
+// elsewhere so each region reads as its own geographic grouping.
+const REGION_ICONS: Record<string, LucideIcon> = {
+  'downtown-central-la': Building2,
+  'industrial-corridor': Warehouse,
+  'glendale-burbank': Film,
+  'san-gabriel-valley': Mountain,
+  'west-la': Palmtree,
+  'san-fernando-valley': Sun,
+  'south-bay': Waves,
 }
 
+// Ordered grid layout. Vernon & Industrial is a standalone city card (a
+// distinct bulk-water offering, not a geographic grouping), slotted second
+// between the two region cards; everything else is a region.
+const GRID_ORDER: ({ type: 'region'; slug: string } | { type: 'vernon' })[] = [
+  { type: 'region', slug: 'downtown-central-la' },
+  { type: 'vernon' },
+  { type: 'region', slug: 'industrial-corridor' },
+  { type: 'region', slug: 'glendale-burbank' },
+  { type: 'region', slug: 'san-gabriel-valley' },
+  { type: 'region', slug: 'west-la' },
+  { type: 'region', slug: 'san-fernando-valley' },
+  { type: 'region', slug: 'south-bay' },
+]
+
+const CARD_CLASS =
+  'group flex flex-col bg-white border-2 border-[#d0e4ef] rounded-2xl p-6 transition-all duration-200 hover:-translate-y-1 hover:border-[#29ABE2] hover:shadow-[0_8px_28px_rgba(27,58,107,0.12)] no-underline'
+
 export default function ServiceAreas() {
-  const areas = cities.map((city) => ({
-    icon: CITY_ICONS[city.slug] ?? Home,
-    name: city.name,
-    desc: city.heroDesc,
-    href: `/areas/${city.slug}`,
-  }))
+  const vernon = getCityBySlug('vernon')
 
   return (
     <section id="areas" className="py-24 px-6 bg-[#F5F8FB]">
@@ -56,24 +42,46 @@ export default function ServiceAreas() {
             We Deliver Across<br />Downtown &amp; Greater LA
           </h2>
           <p className="text-[#5a7080] text-lg max-w-sm">
-            Click your area for local delivery info, pricing, and availability.
+            Click your region for local delivery info, pricing, and availability.
           </p>
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-          {areas.map((area) => {
-            const Icon = area.icon
+          {GRID_ORDER.map((entry) => {
+            // Standalone Vernon & Industrial card — kept unchanged.
+            if (entry.type === 'vernon') {
+              if (!vernon) return null
+              return (
+                <a key="vernon" href={`/areas/${vernon.slug}`} className={CARD_CLASS}>
+                  <div className="w-10 h-10 rounded-xl bg-[#F5F8FB] flex items-center justify-center mb-4">
+                    <Factory size={20} className="text-[#29ABE2]" />
+                  </div>
+                  <h3 className="font-bold text-[#1B3A6B] text-lg mb-2" style={{ fontFamily: 'var(--font-heading)' }}>{vernon.name}</h3>
+                  <p className="text-[#5a7080] text-sm leading-relaxed flex-1 mb-4">{vernon.heroDesc}</p>
+                  <span className="text-[#29ABE2] text-sm font-semibold group-hover:gap-2 flex items-center gap-1 transition-all">
+                    View delivery info →
+                  </span>
+                </a>
+              )
+            }
+
+            const region = getRegionBySlug(entry.slug)
+            if (!region) return null
+            const Icon = REGION_ICONS[region.slug] ?? MapPin
             return (
-              <a
-                key={area.href}
-                href={area.href}
-                className="group flex flex-col bg-white border-2 border-[#d0e4ef] rounded-2xl p-6 transition-all duration-200 hover:-translate-y-1 hover:border-[#29ABE2] hover:shadow-[0_8px_28px_rgba(27,58,107,0.12)] no-underline"
-              >
+              <a key={region.slug} href={`/areas/${region.slug}`} className={CARD_CLASS}>
                 <div className="w-10 h-10 rounded-xl bg-[#F5F8FB] flex items-center justify-center mb-4">
                   <Icon size={20} className="text-[#29ABE2]" />
                 </div>
-                <h3 className="font-bold text-[#1B3A6B] text-lg mb-2" style={{ fontFamily: 'var(--font-heading)' }}>{area.name}</h3>
-                <p className="text-[#5a7080] text-sm leading-relaxed flex-1 mb-4">{area.desc}</p>
+                <h3 className="font-bold text-[#1B3A6B] text-lg mb-2" style={{ fontFamily: 'var(--font-heading)' }}>{region.name}</h3>
+                <p className="text-[#5a7080] text-sm leading-relaxed mb-4">{region.heroDesc}</p>
+                <div className="flex flex-wrap gap-1.5 flex-1 mb-4 content-start">
+                  {region.cities.map((c) => (
+                    <span key={c.name} className="text-xs font-medium text-[#1B3A6B] bg-[#F5F8FB] border border-[#d0e4ef] rounded-full px-2.5 py-1">
+                      {c.name}
+                    </span>
+                  ))}
+                </div>
                 <span className="text-[#29ABE2] text-sm font-semibold group-hover:gap-2 flex items-center gap-1 transition-all">
                   View delivery info →
                 </span>

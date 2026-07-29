@@ -414,3 +414,180 @@ export const cities: CityData[] = [
 export function getCityBySlug(slug: string): CityData | undefined {
   return cities.find((c) => c.slug === slug)
 }
+
+// ── Regions ──────────────────────────────────────────────────────────────
+// Region-level groupings shown as cards in ServiceAreas and rendered as real
+// pages on the same /areas/[slug] route as individual cities. A region's
+// member-city list mixes cities that have their own /areas page (linked pills)
+// with cities that don't yet (plain pills). Keeping the individual pages live
+// preserves their SEO; the region page links to them.
+
+export type RegionCity = { name: string; slug?: string }
+
+export type RegionData = {
+  slug: string
+  name: string
+  county: string
+  phone: string
+  heroDesc: string
+  cities: RegionCity[]
+  customerTypes: string[]
+  testimonial: { quote: string; name: string; role: string; initials: string }
+  mapQuery: string
+}
+
+// Build a member-city entry from an existing city slug (produces a linked pill).
+// `label` overrides the displayed pill text for cities with long names.
+function member(slug: string, label?: string): RegionCity {
+  const city = getCityBySlug(slug)
+  if (!city) throw new Error(`Region references unknown city slug: ${slug}`)
+  return { name: label ?? city.name, slug: city.slug }
+}
+
+const REGION_PHONE = '(213) 371-4500'
+const REGION_COUNTY = 'Los Angeles County'
+
+export const regions: RegionData[] = [
+  {
+    slug: 'downtown-central-la',
+    name: 'Downtown & Central LA',
+    county: REGION_COUNTY,
+    phone: REGION_PHONE,
+    heroDesc: 'Homes, offices, and businesses throughout Downtown and Central LA.',
+    cities: [
+      member('downtown-la'),
+      member('koreatown'),
+      member('echo-park'),
+      member('boyle-heights'),
+      member('mid-wilshire'),
+      member('hollywood'),
+      member('highland-park-eagle-rock'),
+      member('glassell-park', 'Glassell Park'),
+      member('el-sereno'),
+      member('east-la'),
+    ],
+    customerTypes: ['Offices & High-Rises', 'Homes & Families', 'Restaurants & Hospitality', 'Film & TV Productions', 'Event Venues'],
+    testimonial: PLACEHOLDER_TESTIMONIAL,
+    mapQuery: 'Downtown+Los+Angeles+CA',
+  },
+  {
+    slug: 'industrial-corridor',
+    name: 'Industrial Corridor',
+    county: REGION_COUNTY,
+    phone: REGION_PHONE,
+    heroDesc: 'Bulk and industrial water delivery across the Vernon-area industrial corridor.',
+    cities: [
+      member('commerce'),
+      member('huntington-park'),
+      member('bell'),
+      member('maywood'),
+      member('south-gate'),
+    ],
+    customerTypes: ['Industrial Facilities', 'Warehouses & Distribution', 'Bulk Water Stops', 'Manufacturing Facilities'],
+    testimonial: PLACEHOLDER_TESTIMONIAL,
+    mapQuery: 'Commerce+CA',
+  },
+  {
+    slug: 'glendale-burbank',
+    name: 'Glendale & Burbank',
+    county: REGION_COUNTY,
+    phone: REGION_PHONE,
+    heroDesc: 'Homes, offices, and businesses throughout Glendale, Burbank, and Montrose.',
+    cities: [
+      member('glendale'),
+      member('burbank'),
+      member('montrose'),
+    ],
+    customerTypes: ['Film & TV Productions', 'Offices & Businesses', 'Homes & Families', 'Restaurants & Hospitality'],
+    testimonial: PLACEHOLDER_TESTIMONIAL,
+    mapQuery: 'Glendale+CA',
+  },
+  {
+    slug: 'san-gabriel-valley',
+    name: 'San Gabriel Valley',
+    county: REGION_COUNTY,
+    phone: REGION_PHONE,
+    heroDesc: 'Homes, offices, and businesses throughout the San Gabriel Valley.',
+    cities: [
+      member('pasadena'),
+      member('south-pasadena'),
+      member('san-marino'),
+      member('alhambra'),
+      member('monterey-park'),
+      member('san-gabriel'),
+      member('rosemead'),
+      member('temple-city'),
+      member('arcadia'),
+      member('azusa'),
+      member('el-monte'),
+    ],
+    customerTypes: ['Homes & Families', 'Offices & Businesses', 'Restaurants & Hospitality', 'Event Venues'],
+    testimonial: PLACEHOLDER_TESTIMONIAL,
+    mapQuery: 'San+Gabriel+Valley+CA',
+  },
+  {
+    slug: 'west-la',
+    name: 'West LA',
+    county: REGION_COUNTY,
+    phone: REGION_PHONE,
+    heroDesc: 'Homes, offices, and businesses throughout West LA.',
+    cities: [
+      { name: 'Santa Monica' },
+      { name: 'West Hollywood' },
+      { name: 'Venice' },
+      { name: 'Westwood' },
+      { name: 'Brentwood' },
+      { name: 'Century City' },
+      { name: 'Marina del Rey' },
+      member('culver-city'),
+      member('palms-beverlywood', 'Palms & Beverlywood'),
+    ],
+    customerTypes: ['Film & TV Productions', 'Offices & Businesses', 'Homes & Families', 'Restaurants & Hospitality'],
+    testimonial: PLACEHOLDER_TESTIMONIAL,
+    mapQuery: 'West+Los+Angeles+CA',
+  },
+  {
+    slug: 'san-fernando-valley',
+    name: 'San Fernando Valley',
+    county: REGION_COUNTY,
+    phone: REGION_PHONE,
+    heroDesc: 'Homes, offices, and businesses throughout the San Fernando Valley.',
+    cities: [
+      { name: 'Sherman Oaks' },
+      { name: 'Woodland Hills' },
+      { name: 'North Hollywood' },
+      { name: 'Encino' },
+      { name: 'Van Nuys' },
+      { name: 'Northridge' },
+      { name: 'Studio City' },
+      { name: 'Calabasas' },
+    ],
+    customerTypes: ['Homes & Families', 'Offices & Businesses', 'Restaurants & Hospitality', 'Event Venues'],
+    testimonial: PLACEHOLDER_TESTIMONIAL,
+    mapQuery: 'San+Fernando+Valley+CA',
+  },
+  {
+    slug: 'south-bay',
+    name: 'South Bay',
+    county: REGION_COUNTY,
+    phone: REGION_PHONE,
+    heroDesc: 'Homes, offices, and businesses throughout the South Bay.',
+    cities: [
+      { name: 'Torrance' },
+      { name: 'Manhattan Beach' },
+      { name: 'Hermosa Beach' },
+      { name: 'Redondo Beach' },
+      { name: 'San Pedro' },
+      { name: 'Inglewood' },
+      { name: 'El Segundo' },
+      { name: 'Carson' },
+    ],
+    customerTypes: ['Homes & Families', 'Offices & Businesses', 'Restaurants & Hospitality', 'Event Venues'],
+    testimonial: PLACEHOLDER_TESTIMONIAL,
+    mapQuery: 'South+Bay+Los+Angeles+CA',
+  },
+]
+
+export function getRegionBySlug(slug: string): RegionData | undefined {
+  return regions.find((r) => r.slug === slug)
+}

@@ -40,20 +40,21 @@ export default function Hero() {
           {/* Badge */}
           <div className="inline-flex items-center gap-2 bg-[#29ABE2]/10 border border-[#29ABE2]/30 text-[#29ABE2] text-xs font-bold tracking-widest uppercase px-4 py-2 rounded-full mb-7">
             <span className="w-1.5 h-1.5 rounded-full bg-[#29ABE2] animate-pulse" />
-            Serving Downtown LA for Over 20 Years
+            Serving Greater LA for Over 20 Years
           </div>
 
           <h1 className="text-5xl lg:text-6xl font-bold text-white leading-[1.08] mb-6" style={{ fontFamily: 'var(--font-heading)' }}>
-            Stay Hydrated<br />
-            and Healthy with<br />
-            <span className="text-[#29ABE2]">DTLA Water.</span>
+            Your Local Water Delivery<br />
+            Partner—Across<br />
+            <span className="text-[#29ABE2]">Greater Los Angeles.</span>
           </h1>
 
-          <p className="text-lg text-white/75 leading-relaxed mb-10 max-w-lg">
-            Reliable bottled water delivery for offices, industrial facilities, events,
-            and film productions across Downtown Los Angeles — plus flagship Vernon
-            Industrial Water bulk water stops for warehouses and manufacturers. Small
-            enough to care, big enough to deliver.
+          <p className="text-lg text-white/75 leading-relaxed mb-10 max-w-xl">
+            DTLA Water proudly serves homes, offices, and businesses throughout Greater
+            Los Angeles, the San Fernando Valley, West LA, the South Bay, and surrounding
+            communities. We offer affordable bottled water delivery for residential
+            customers and scalable delivery solutions for offices, warehouses,
+            manufacturing facilities, factories, and fulfillment centers.
           </p>
 
           <div className="flex flex-wrap gap-4">
