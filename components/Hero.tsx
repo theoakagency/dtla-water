@@ -45,7 +45,7 @@ export default function Hero() {
 
           <h1 className="text-5xl lg:text-6xl font-bold text-white leading-[1.08] mb-6" style={{ fontFamily: 'var(--font-heading)' }}>
             Your Local Water Delivery<br />
-            Partner—Across<br />
+            Partner Across<br />
             <span className="text-[#29ABE2]">Greater Los Angeles.</span>
           </h1>
 
