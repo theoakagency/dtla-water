@@ -25,9 +25,10 @@ export async function POST(req: NextRequest) {
 
     // Notify owner
     await resend.emails.send({
-      from: 'DTLA Water <contact@dtlawater.com>',
+      // Using Resend's shared onboarding sender until dtlawater.com is verified in Resend.
+      from: 'DTLA Water <onboarding@resend.dev>',
       to: process.env.OWNER_EMAIL as string,
-      replyTo: email,
+      replyTo: email, // replies go straight to the customer
       subject: `Contact Form: ${subject || 'General Inquiry'} — ${name}`,
       html: `
         <div style="font-family:Arial,sans-serif;max-width:600px;margin:0 auto;">
@@ -79,7 +80,12 @@ export async function POST(req: NextRequest) {
       `,
     })
 
-    // Auto-reply to sender
+    // ⚠️ DISABLED: customer contact auto-reply email.
+    // Intentionally NOT sent until the dtlawater.com sending domain is verified
+    // in Resend (sending from an unverified domain fails). Disabled explicitly —
+    // not left to fail silently — so it isn't mistaken for a bug later.
+    // Re-enable: verify dtlawater.com in Resend, then uncomment this block.
+    /*
     await resend.emails.send({
       from: 'DTLA Water <hello@dtlawater.com>',
       to: email,
@@ -111,6 +117,7 @@ export async function POST(req: NextRequest) {
         </div>
       `,
     })
+    */
 
     return NextResponse.json({ success: true })
   } catch (err) {
