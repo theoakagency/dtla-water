@@ -15,8 +15,10 @@ export async function POST(req: NextRequest) {
     }
 
     await resend.emails.send({
-      from: 'DTLA Water <orders@dtlawater.com>',
+      // Using Resend's shared onboarding sender until dtlawater.com is verified in Resend.
+      from: 'DTLA Water <onboarding@resend.dev>',
       to: process.env.OWNER_EMAIL as string,
+      replyTo: email, // replies go straight to the customer
       subject: `Sister Company Referral — ${firstName} ${lastName} (ZIP: ${zip})`,
       html: `
         <div style="font-family:Arial,sans-serif;max-width:600px;margin:0 auto;">
