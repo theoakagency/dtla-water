@@ -7,7 +7,7 @@ export interface SessionData {
 
 export const sessionOptions: SessionOptions = {
   password: process.env.SESSION_SECRET as string,
-  cookieName: 'pureo_admin_session',
+  cookieName: 'dtla_admin_session',
   cookieOptions: {
     secure: process.env.NODE_ENV === 'production',
     httpOnly: true,
