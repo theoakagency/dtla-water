@@ -87,15 +87,11 @@ export async function POST(req: NextRequest) {
       `,
     })
 
-    // ⚠️ DISABLED: customer order-confirmation email.
-    // Intentionally NOT sent until the dtlawater.com sending domain is verified
-    // in Resend (sending from an unverified domain fails). Disabled explicitly —
-    // not left to fail silently — so it isn't mistaken for a bug later.
-    // Re-enable: verify dtlawater.com in Resend, then uncomment this block.
-    /*
+    // Send confirmation to customer
     await resend.emails.send({
-      from: 'DTLA Water <hello@dtlawater.com>',
+      from: 'DTLA Water <onboarding@resend.dev>',
       to: email,
+      replyTo: process.env.OWNER_EMAIL as string, // customer replies reach DTLA Water
       subject: `Your DTLA Water delivery request is confirmed!`,
       html: `
         <div style="font-family:Arial,sans-serif;max-width:600px;margin:0 auto;">
@@ -138,7 +134,6 @@ export async function POST(req: NextRequest) {
         </div>
       `,
     })
-    */
 
     return NextResponse.json({ success: true, orderId: order.id })
   } catch (err) {
