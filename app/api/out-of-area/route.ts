@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { Resend } from 'resend'
+import { adminRecipients } from '@/lib/email'
 
 export async function POST(req: NextRequest) {
   const resend = new Resend(process.env.RESEND_API_KEY)
@@ -16,8 +17,8 @@ export async function POST(req: NextRequest) {
 
     await resend.emails.send({
       // Using Resend's shared onboarding sender until dtlawater.com is verified in Resend.
-      from: 'DTLA Water <onboarding@resend.dev>',
-      to: process.env.OWNER_EMAIL as string,
+      from: process.env.FROM_EMAIL as string,
+      to: adminRecipients(),
       replyTo: email, // replies go straight to the customer
       subject: `Sister Company Referral — ${firstName} ${lastName} (ZIP: ${zip})`,
       html: `
