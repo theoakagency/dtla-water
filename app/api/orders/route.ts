@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from 'next/server'
 import { prisma } from '@/lib/db'
 import { Resend } from 'resend'
 import { requireAdmin } from '@/lib/auth'
+import { adminRecipients } from '@/lib/email'
 
 export async function POST(req: NextRequest) {
   const resend = new Resend(process.env.RESEND_API_KEY)
@@ -47,8 +48,8 @@ export async function POST(req: NextRequest) {
     // Send notification to owner
     await resend.emails.send({
       // Using Resend's shared onboarding sender until dtlawater.com is verified in Resend.
-      from: 'DTLA Water <onboarding@resend.dev>',
-      to: process.env.OWNER_EMAIL as string,
+      from: process.env.FROM_EMAIL as string,
+      to: adminRecipients(),
       replyTo: email, // replies go straight to the customer
       subject: `New Order Request — ${firstName} ${lastName} (${city})`,
       html: `
@@ -90,9 +91,9 @@ export async function POST(req: NextRequest) {
 
     // Send confirmation to customer
     await resend.emails.send({
-      from: 'DTLA Water <onboarding@resend.dev>',
+      from: process.env.FROM_EMAIL as string,
       to: email,
-      replyTo: process.env.OWNER_EMAIL as string, // customer replies reach DTLA Water
+      replyTo: adminRecipients(), // customer replies reach the DTLA Water team
       subject: `Your DTLA Water delivery request is confirmed!`,
       html: `
         <div style="font-family:Arial,sans-serif;max-width:600px;margin:0 auto;">
