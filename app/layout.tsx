@@ -72,10 +72,8 @@ export const metadata: Metadata = {
     follow: true,
     googleBot: { index: true, follow: true },
   },
-  verification: {
-    // Add your Google Search Console verification token here
-    google: 'your-google-verification-token',
-  },
+  // Search Console is verified via a GoDaddy DNS TXT record (Domain property),
+  // so no google-site-verification meta tag is needed here.
 }
 
 // JSON-LD local business schema for Google rich results
