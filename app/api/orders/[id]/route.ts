@@ -1,10 +1,14 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { prisma } from '@/lib/db'
+import { requireAdmin } from '@/lib/auth'
 
 export async function GET(
   _req: NextRequest,
   { params }: { params: Promise<{ id: string }> }
 ) {
+  const unauthorized = await requireAdmin()
+  if (unauthorized) return unauthorized
+
   const { id } = await params
   const order = await prisma.order.findUnique({ where: { id: Number(id) } })
   if (!order) return NextResponse.json({ error: 'Not found' }, { status: 404 })
@@ -15,6 +19,9 @@ export async function PATCH(
   req: NextRequest,
   { params }: { params: Promise<{ id: string }> }
 ) {
+  const unauthorized = await requireAdmin()
+  if (unauthorized) return unauthorized
+
   const { id } = await params
   const body = await req.json()
   const { status, notes } = body
@@ -34,6 +41,9 @@ export async function DELETE(
   _req: NextRequest,
   { params }: { params: Promise<{ id: string }> }
 ) {
+  const unauthorized = await requireAdmin()
+  if (unauthorized) return unauthorized
+
   const { id } = await params
   await prisma.order.delete({ where: { id: Number(id) } })
   return NextResponse.json({ success: true })

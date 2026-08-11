@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { prisma } from '@/lib/db'
+import { requireAdmin } from '@/lib/auth'
 
 type OrderRow = {
   id: number
@@ -21,6 +22,9 @@ type OrderRow = {
 }
 
 export async function GET(req: NextRequest) {
+  const unauthorized = await requireAdmin()
+  if (unauthorized) return unauthorized
+
   const { searchParams } = new URL(req.url)
   const status = searchParams.get('status')
 
