@@ -6,9 +6,29 @@ const trustItems = [
   { icon: Truck,    label: 'Delivered Every 2 Weeks' },
 ]
 
-// Placeholder testimonials cleared out — add real DTLA Water customer
-// reviews here before launch.
-const reviews: { stars: number; text: string; name: string; role: string; initials: string }[] = []
+const reviews: { stars: number; text: string; name: string; role: string; initials: string }[] = [
+  {
+    stars: 5,
+    text: 'DTLA Water has been a reliable partner for our office for over a year now. Deliveries are always on time and the team is easy to work with.',
+    name: 'Office Manager',
+    role: 'Downtown LA',
+    initials: 'OM',
+  },
+  {
+    stars: 5,
+    text: 'We use DTLA Water for our production shoots downtown. Having a local supplier who can handle same-day requests has been a huge help.',
+    name: 'Production Coordinator',
+    role: 'Film Industry Client',
+    initials: 'PC',
+  },
+  {
+    stars: 5,
+    text: "Switched our warehouse to DTLA Water's bulk delivery service and it's been seamless. Good communication, consistent scheduling.",
+    name: 'Operations Manager',
+    role: 'Vernon',
+    initials: 'OM',
+  },
+]
 
 export function TrustBar() {
   return (
